@@ -84,13 +84,13 @@
                     <div class="collapse show" id="navbar-examples">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('profile.edit') }}">
+                                <a class="nav-link" href="{{ route('formulario.create') }}">
                                     <i class="fas fa-plus"></i>
                                     {{ __('Nova proposta') }}
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ route('formulario.index') }}">
                                     <i class="fas fa-list"></i>
                                     {{ __('Minhas propostas') }}
                                 </a>
