@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -12,13 +13,27 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => 'Admin Admin',
-            'email' => 'admin@argon.com',
+        $admin = User::create([
+            'name' => 'admin',
+            'email' => 'admin@mail.com',
             'email_verified_at' => now(),
-            'password' => Hash::make('secret'),
+            'password' => bcrypt('12345678'),
             'created_at' => now(),
             'updated_at' => now()
         ]);
+        $admin->assignRole('admin');
+
+           
+        $correspondente = User::create([
+            'name' => 'correspondente',
+            'email' => 'correspondente@mail.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt('12345678'),
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        $correspondente->assignRole('correspondente');
+
     }
 }
