@@ -97,7 +97,7 @@
                         </ul>
                     </div>
                 </li>
-
+                @role('admin')
                 <li class="nav-item">
                     <a class="nav-link" href="#navbar2" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar2">
                         <i class="fas fa-users" style="color: #f4645f;"></i>
@@ -114,7 +114,7 @@
                         </ul>
                     </div>
                 </li>
-
+                @endrole
 
                 <li class="nav-item">
                     <a class="nav-link active" href="#navbar3" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar3">
@@ -130,12 +130,14 @@
                                     {{ __('Simulador') }}
                                 </a>
                             </li>
+                            @role('admin')
                             <li class="nav-item">
                                 <a class="nav-link"  href="#">
                                 <i class="fas fa-cogs"></i>
                                     {{ __('Configurações') }}
                                 </a>
                             </li>
+                            @endrole
                         </ul>
                     </div>
                 </li>

@@ -3,9 +3,22 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Traits\HasRoles;
+
 
 class Proposal extends Model
 {
+    use HasRoles;
+
+    public function verifyProposalFromUser($id)
+    {
+        return Proposal::where('user_id', $id)->get();
+        // return DB::table('proposals')
+        //     ->where('user_id', '=', $id)
+        //     ->get();
+    }
+
     // protected $fillable = [
     //     //company
     //     'company_type', 'company_name', 'company_replyemail', 'company_city',

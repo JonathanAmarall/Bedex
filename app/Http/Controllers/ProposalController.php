@@ -4,16 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FormProposalRequest;
 use App\Proposal;
+use App\User;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProposalController extends Controller
 {
-
     protected $_proposal;
+    protected $user;
 
-    public function __construct(Proposal $proposal)
+    public function __construct(Proposal $proposal, User $user)
     {
         $this->_proposal = $proposal;
+        $this->user = $user;
     }
     /**
      * Display a listing of the resource.
@@ -22,9 +26,14 @@ class ProposalController extends Controller
      */
     public function index()
     {
-        $propostas = $this->_proposal->all();
-        return view('proposals.form.index', compact('propostas'));
-
+        $this->user->id = Auth()->User()->id;
+        if ($this->user->hasRole('admin')) {
+            $propostas = Proposal::all();
+            return view('proposals.form.index', compact('propostas'));
+        } else {
+            $propostas = $this->_proposal->verifyProposalFromUser(Auth()->User()->id);
+            return view('proposals.form.index', compact('propostas'));
+        }
     }
 
     /**
@@ -64,7 +73,6 @@ class ProposalController extends Controller
 
             return redirect()->route('formulario.index');
         }
-    
     }
 
     /**

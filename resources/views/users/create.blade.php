@@ -43,6 +43,21 @@
                                         </span>
                                     @endif
                                 </div>
+
+                                <div class="form-group{{ $errors->has('role') ? ' has-danger' : '' }}">
+                                    <label for="nivel" class="form-control-label">Nível de Usuário</label>
+                                    <select class="form-control" name="role" id="nivel" required>
+                                        <option value="">Não selecionado</option>
+                                        @foreach($roles as $key => $value)
+                                        <option  value="{{ $key }}">{{ $value }}</option>
+                                        @endforeach
+                                    </select>
+                                    @if($errors->has('role'))
+                                    <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('role') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
                                 <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-password">{{ __('Password') }}</label>
                                     <input type="password" name="password" id="input-password" class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Password') }}" value="" required>

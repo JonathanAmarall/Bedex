@@ -4,11 +4,19 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:create user'], ['only' => ['create', 'store']]);
+        $this->middleware(['permission:read users'], ['only' => 'index']);
+        $this->middleware(['permission:update user'], ['only' => ['edit', 'update']]);
+        $this->middleware(['permission:delete user'], ['only' => 'delete']);
+    }
     /**
      * Display a listing of the users
      *
@@ -28,7 +36,7 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::all()->pluck('name', 'id');
-        dd($roles);
+        // dd($roles);
         return view('users.create', compact('roles'));
     }
 
@@ -41,9 +49,18 @@ class UserController extends Controller
      */
     public function store(UserRequest $request, User $model)
     {
-        $model->create($request->merge(['password' => Hash::make($request->get('password'))])->all());
+        $user = new User;
 
-        return redirect()->route('user.index')->withStatus(__('User successfully created.'));
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+
+        if ($user->save()) {
+            $user->assignRole($request->role);
+            return redirect()->route('user.index')
+            ->withStatus(__('Usuário criado com sucesso.'));
+        }
+
     }
 
     /**
@@ -54,7 +71,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users.edit', compact('user'));
+        $roles = Role::all()->pluck('name', 'id');
+
+        return view('users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -66,12 +85,17 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User  $user)
     {
-        $user->update(
-            $request->merge(['password' => Hash::make($request->get('password'))])
-                ->except([$request->get('password') ? '' : 'password']
-        ));
+        $user->name  = $request->name;
+        $user->email = $request->email;
+        if ($request->password != null) {
+            $user->password = bcrypt($request->password);
+        }
+        $user->syncRoles($request->role);
 
-        return redirect()->route('user.index')->withStatus(__('User successfully updated.'));
+        $user->save();
+
+        return redirect()->route('user.index')
+        ->withStatus(__('Usuário atualizado com sucesso.'));
     }
 
     /**
@@ -82,8 +106,9 @@ class UserController extends Controller
      */
     public function destroy(User  $user)
     {
+        $user->removeRole($user->roles->implode('name', ','));
         $user->delete();
-
-        return redirect()->route('user.index')->withStatus(__('User successfully deleted.'));
+        return redirect()->route('user.index')
+        ->withStatus(__('Usuário deletado com sucesso.'));
     }
 }

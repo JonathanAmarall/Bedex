@@ -37,6 +37,7 @@
                                 <th scope="col">{{ __('Nome') }}</th>
                                 <th scope="col">{{ __('E-mail') }}</th>
                                 <th scope="col">{{ __('Data de Cadastro') }}</th>
+                                <th scope="col">{{ __('Permissões') }}</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
@@ -48,6 +49,7 @@
                                     <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
                                 </td>
                                 <td>{{ $user->created_at->format('d/m/Y H:i') }}</td>
+                                <td>{{ $user->roles->implode('name',', ') }}</td>
                                 <td class="text-right">
                                     <div class="dropdown">
                                         <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

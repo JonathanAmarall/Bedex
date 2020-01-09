@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'admin',
             'email' => 'admin@mail.com',
             'email_verified_at' => now(),
-            'password' => bcrypt('12345678'),
+            'password' => bcrypt('soft147369'),
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -28,7 +28,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'correspondente',
             'email' => 'correspondente@mail.com',
             'email_verified_at' => now(),
-            'password' => bcrypt('12345678'),
+            'password' => bcrypt('soft147369'),
             'created_at' => now(),
             'updated_at' => now()
         ]);

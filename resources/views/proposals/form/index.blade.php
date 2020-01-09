@@ -2,7 +2,6 @@
 
 @section('content')
 <!-- <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script> -->
-
 <div class="container p-5">
     <h2 class="p-3">Minhas propostas</h2>
     <table id="table" class="display" style="width:100%">
@@ -19,15 +18,15 @@
         </thead>
         <tbody>
             @foreach($propostas as $p)
-            <tr>
-                <td>{{ $p->customer_name }} </td>
-                <td>{{ $p->company_name }}</td>
-                <td>{{ $p->status }}</td>
-                <td>{{ $p->reaplyemail }} </td>
-                <td>{{ date("d/m/y", strtotime($p->created_at))  }} </td>
-                <td>{{ number_format($p->value, 2,',', '')  }}</td>
-                <td><a href="{{ route('formulario.show', $p) }}" class="btn btn-light">visualizar </a></td>
-            </tr>
+                <tr>
+                    <td>{{ $p->customer_name }} </td>
+                    <td>{{ $p->company_name }}</td>
+                    <td>{{ $p->status }}</td>
+                    <td>{{ $p->company_replyemail }} </td>
+                    <td>{{ date("d/m/y", strtotime($p->created_at))  }} </td>
+                    <td>{{ number_format($p->value, 2,',', '')  }}</td>
+                    <td><a href="{{ route('formulario.show', $p) }}" class="btn btn-light">visualizar </a></td>
+                </tr>
             @endforeach
         </tbody>
         <tfoot>
