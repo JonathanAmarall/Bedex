@@ -7,8 +7,9 @@ use App\Proposal;
 use App\User;
 use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
+use Spatie\Permission\Traits\HasRoles;
 class ProposalController extends Controller
 {
     protected $_proposal;
@@ -26,8 +27,7 @@ class ProposalController extends Controller
      */
     public function index()
     {
-        $this->user->id = Auth()->User()->id;
-        if ($this->user->hasRole('admin')) {
+        if (Auth::user()->hasRole('admin')) {
             $propostas = Proposal::all();
             return view('proposals.form.index', compact('propostas'));
         } else {
