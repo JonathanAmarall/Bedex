@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container p-5">
+<div class="container" style="padding-top: 80px">
 
     <div class="card shadow">
         <div class="card-header">
@@ -31,6 +31,7 @@
                 <div class="form-row p-3">
                     <div class="form-check form-check-inline col">
                         <input class="form-check-input" type="radio" name="company_type" id="radio1" value="correspondente" checked>
+                        <label class="form-check-label" for="radio1">
                         Correspondente
                         </label>
                     </div>
@@ -54,8 +55,8 @@
                         <input type="text" id="razaoSocial" name="company_name" class="form-control" placeholder="Razão social" required>
                     </div>
                     <div class="col">
-                        <label for="razaoSocial">Cidade: *</label>
-                        <input type="text" id="razaoSocial" name="company_city" class="form-control" placeholder="cidade" required>
+                        <label for="cidade">Cidade: *</label>
+                        <input type="text" id="cidade" name="company_city" class="form-control" placeholder="cidade" required>
                     </div>
                     <div class="col">
                         <label for="emailResposta">E-mail para resposta: *</label>
@@ -71,7 +72,7 @@
                     </div>
                     <div class="col">
                         <label for="cpfTomador">CPF: *</label>
-                        <input type="text" id="emailResposta" name="customer_cpf" class="form-control" placeholder="000.000.000-00" required>
+                        <input type="text" id="cpfTomador" name="customer_cpf" class="form-control" placeholder="000.000.000-00" required>
                     </div>
                     <div class="col">
                         <label for="salarioTomador">Salário Líquido mensal R$: *</label>
@@ -84,8 +85,8 @@
                         <input type="number" class="form-control" name="value" id="valorSolicitado" required>
                     </div>
                     <div class="col">
-                        <label for="valorSolicitado">Número de parcelas:</label>
-                        <input type="number" class="form-control" name="number_installments" id="valorSolicitado" required>
+                        <label for="numeroParcelas">Número de parcelas:</label>
+                        <input type="number" class="form-control" name="number_installments" id="numeroParcelas" required>
                     </div>
                 </div>
 
