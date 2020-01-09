@@ -4,10 +4,8 @@
 <!-- <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script> -->
 
 <div class="container p-5">
-    Minhas propostas
-
-
-    <table id="example" class="display" style="width:100%">
+    <h2 class="p-3">Minhas propostas</h2>
+    <table id="table" class="display" style="width:100%">
         <thead>
             <tr>
                 <th>Tomador</th>
@@ -28,7 +26,7 @@
                 <td>{{ $p->reaplyemail }} </td>
                 <td>{{ date("d/m/y", strtotime($p->created_at))  }} </td>
                 <td>{{ number_format($p->value, 2,',', '')  }}</td>
-                <td><a href="#">visualizar</a></td>
+                <td><a href="{{ route('formulario.show', $p) }}" class="btn btn-light">visualizar </a></td>
             </tr>
             @endforeach
         </tbody>
@@ -51,7 +49,7 @@
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
 <script>
     $(document).ready(function() {
-        $('#example').DataTable({
+        $('#table').DataTable({
             "language": {
                 "lengthMenu": "Exibir _MENU_ registros por página",
                 "zeroRecords": "Nada encontrado - desculpe",

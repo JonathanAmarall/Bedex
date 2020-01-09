@@ -16,7 +16,7 @@
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                        <img alt="Image placeholder" src="{{ asset('argon') }}/img/theme/team-1-800x800.jpg">
+                            <img alt="Image placeholder" src="{{ asset('argon') }}/img/theme/team-1-800x800.jpg">
                         </span>
                     </div>
                 </a>
@@ -28,7 +28,7 @@
                         <i class="ni ni-single-02"></i>
                         <span>{{ __('Meu perfil') }}</span>
                     </a>
-                  
+
                     <div class="dropdown-divider"></div>
                     <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
@@ -70,18 +70,17 @@
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">
+                    <a class="nav-link" style="color: #f4645f;" href="{{ route('home') }}">
                         <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
+                    <a class="nav-link" href="#navbar1" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar1">
                         <i class="fas fa-money-check-alt" style="color: #f4645f;"></i>
                         <span class="nav-link-text" style="color: #f4645f;">{{ __('Propostas') }}</span>
                     </a>
-
-                    <div class="collapse show" id="navbar-examples">
+                    <div class="collapse" id="navbar1">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('formulario.create') }}">
@@ -118,12 +117,30 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                    <i class="fas fa-wallet"></i> {{ __('Simulador') }}
+                    <a class="nav-link active" href="#navbar3" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar3">
+                        <i class="fas fa-wallet" style="color: #f4645f;"></i>
+                        <span class="nav-link-text" style="color: #f4645f;">{{ __('Simulador') }}</span>
                     </a>
+
+                    <div class="collapse" id="navbar3">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link"  href="#">
+                                    <i class="fas fa-wallet"></i>
+                                    {{ __('Simulador') }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link"  href="#">
+                                <i class="fas fa-cogs"></i>
+                                    {{ __('Configurações') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
-               
-               
+
+
             </ul>
             <!-- Divider -->
             <hr class="my-3">
