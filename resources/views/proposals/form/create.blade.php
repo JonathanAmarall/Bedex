@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+@include('layouts.headers.cards-form')
 
-<div class="container" style="padding-top: 80px">
+<div class="container p-1">
 
     <div class="card shadow">
         <div class="card-header">

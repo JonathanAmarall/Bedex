@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+@include('layouts.headers.cards-form')
 <!-- <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script> -->
-<div class="container p-5">
-    <h2 class="p-3">Minhas propostas</h2>
+<div class="container p-1">
     <table id="table" class="display" style="width:100%">
         <thead>
             <tr>
@@ -44,7 +44,6 @@
 
 </div>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
-  
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
 <script>
     $(document).ready(function() {

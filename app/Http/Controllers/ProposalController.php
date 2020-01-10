@@ -70,11 +70,9 @@ class ProposalController extends Controller
         $form->guarantor_rg = $request->guarantor_rg;
         $form->guarantor_monthly_salary = $request->guarantor_monthly_salary;
         if ($form->save()) {
-
             return redirect()->route('formulario.index');
         }
     }
-
     /**
      * Display the specified resource.
      *
@@ -83,7 +81,8 @@ class ProposalController extends Controller
      */
     public function show($id)
     {
-        //
+        $proposta = Proposal::find($id);
+        return view('proposals.form.show', compact('proposta'));
     }
 
     /**
@@ -94,7 +93,7 @@ class ProposalController extends Controller
      */
     public function edit($id)
     {
-        //
+        echo "editando $id";
     }
 
     /**
@@ -119,4 +118,6 @@ class ProposalController extends Controller
     {
         //
     }
+
+   
 }
