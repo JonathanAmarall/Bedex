@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
-@include('layouts.headers.cards')
-<div class="container-fluid mt--7">
+@include('layouts.headers.cards-form')
+<div class="container-fluid p-2">
     <div class="row">
         <div class="col-xl-8 mb-3 mb-xl-0">
             <div class="card card-profile  shadow">

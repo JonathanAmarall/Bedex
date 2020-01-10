@@ -2,9 +2,9 @@
 
 @section('content')
 
-@include('layouts.headers.cards')
+@include('layouts.headers.cards-form')
 
-<div class="container-fluid mt--7">
+<div class="container-fluid p-2">
     <div class="row">
         <div class="col">
             <div class="card shadow">
