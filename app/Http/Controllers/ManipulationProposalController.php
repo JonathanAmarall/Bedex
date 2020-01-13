@@ -3,20 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Proposal;
+use App\User;
 use Illuminate\Http\Request;
+use App\Notifications\NotificationProposals;
 
 class ManipulationProposalController extends Controller
 {
     public function alterProposal(Request $request, $id)
     {
         $proposta = Proposal::find($id);
+        
         switch ($request->status) {
             case ("Aprovado"):
+                User::find($proposta->user_id)->notify(new NotificationProposals($proposta));
                 return view('proposals.form.edit', compact('proposta'));
-                break;
+            break;
             case ("Reprovado"):
                 $proposta->status = "Reprovado";
                 $proposta->save();
+                User::find($proposta->user_id)->notify(new NotificationProposals($proposta));
                 return redirect()->back();
                 break;
             case ("Pré-analise"):
