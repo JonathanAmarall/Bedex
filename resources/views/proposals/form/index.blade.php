@@ -4,43 +4,45 @@
 @include('layouts.headers.cards-form')
 <!-- <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script> -->
 <div class="container p-1">
-    <table id="table" class="display" style="width:100%">
-        <thead>
-            <tr>
-                <th>Tomador</th>
-                <th>Companhia</th>
-                <th>Status</th>
-                <th>E-mail</th>
-                <th>Data da solicitação</th>
-                <th>Valor R$</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($propostas as $p)
+    <div class="table-responsive">
+        <table id="table" class="display" style="width:100%">
+            <thead>
                 <tr>
-                    <td>{{ $p->customer_name }} </td>
-                    <td>{{ $p->company_name }}</td>
-                    <td>{{ $p->status }}</td>
-                    <td>{{ $p->company_replyemail }} </td>
-                    <td>{{ date("d/m/y", strtotime($p->created_at))  }} </td>
-                    <td>{{ number_format($p->value, 2,',', '')  }}</td>
-                    <td><a href="{{ route('formulario.show', $p) }}" class="btn btn-light">visualizar </a></td>
+                    <th>Tomador</th>
+                    <th>Companhia</th>
+                    <th>Status</th>
+                    <th>E-mail</th>
+                    <th>Data da solicitação</th>
+                    <th>Valor R$</th>
+                    <th>Ações</th>
                 </tr>
-            @endforeach
-        </tbody>
-        <tfoot>
-            <tr>
-                <th>Tomador</th>
-                <th>Companhia</th>
-                <th>Status</th>
-                <th>E-mail</th>
-                <th>Data da solicitão</th>
-                <th>Valor R$</th>
-                <th>Ações</th>
-            </tr>
-        </tfoot>
-    </table>
+            </thead>
+            <tbody>
+                @foreach($propostas as $p)
+                    <tr>
+                        <td>{{ $p->customer_name }} </td>
+                        <td>{{ $p->company_name }}</td>
+                        <td>{{ $p->status }}</td>
+                        <td><a href="mailto:{{ $p->company_replyemail }}">{{ $p->company_replyemail }}</a> </td>
+                        <td>{{ date("d/m/y", strtotime($p->created_at))  }} </td>
+                        <td>{{ number_format($p->value, 2,',', '')  }}</td>
+                        <td><a href="{{ route('formulario.show', $p) }}" class="btn btn-light">visualizar </a></td>
+                    </tr>
+                @endforeach
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Tomador</th>
+                    <th>Companhia</th>
+                    <th>Status</th>
+                    <th>E-mail</th>
+                    <th>Data da solicitão</th>
+                    <th>Valor R$</th>
+                    <th>Ações</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
 
 </div>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">

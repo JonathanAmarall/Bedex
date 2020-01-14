@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FormProposalRequest;
+use App\Notifications\NotificationProposals;
 use App\Proposal;
 use App\User;
-use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Spatie\Permission\Traits\HasRoles;
 class ProposalController extends Controller
 {
     protected $_proposal;
@@ -70,6 +68,11 @@ class ProposalController extends Controller
         $form->guarantor_rg = $request->guarantor_rg;
         $form->guarantor_monthly_salary = $request->guarantor_monthly_salary;
         if ($form->save()) {
+            $users = User::role('admin')->get();
+            $lastProposal = Proposal::orderBy('created_at', 'desc')->first();
+            foreach($users as $adminUser){
+                $adminUser->notify(new NotificationProposals($lastProposal));
+            }
             return redirect()->route('formulario.index');
         }
     }

@@ -25,30 +25,29 @@
 </head>
 
 <body class="{{ $class ?? '' }}">
-        @auth()
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            @csrf
-        </form>
-        @include('layouts.navbars.sidebar')
-        @endauth
 
-        <div class="main-content">
-            @include('layouts.navbars.navbar')
-            @yield('content')
-        </div>
+    @auth()
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
+    @include('layouts.navbars.sidebar')
+    @endauth
 
-        @guest()
-        @include('layouts.footers.guest')
-        @endguest
+    <div class="main-content">
+        @include('layouts.navbars.navbar')
+        @yield('content')
+    </div>
 
-        <!-- <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script> -->
+    @guest()
+    @include('layouts.footers.guest')
+    @endguest
 
-        <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
-        @stack('js')
-
-        <!-- Argon JS -->
-        <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
+    <!-- <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script> -->
+    <script src="{{ asset('argon') }}/vendor/jquery/jquery.mask.js"></script>
+    <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @stack('js')
+    <!-- Argon JS -->
+    <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
 </body>
 
 </html>

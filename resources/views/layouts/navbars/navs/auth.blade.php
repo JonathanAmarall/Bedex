@@ -1,21 +1,20 @@
-<!-- Top navbar -->
-<link type="text/css" href="{{ asset('css/app.css') }}">
 <div id="app">
+
+    <!-- Top navbar -->
+    <link type="text/css" href="{{ asset('css/app.css') }}">
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
         <div class="container-fluid">
             <!-- Brand -->
             <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{ route('home') }}">{{ __('Dashboard') }}</a>
-            <!-- Notify center -->
-
-            <Notifications></Notifications> 
-
+            <!-- Notify center Vue component -->
+            <Notifications></Notifications>
             <!-- User -->
             <ul class="navbar-nav align-items-center d-none d-md-flex">
                 <li class="nav-item dropdown">
                     <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
                             <span class="avatar avatar-sm rounded-circle">
-                                <!-- <img alt="Image placeholder" src=""> -->
+                                <img src="http://www.prefeiturademacaubas.ba.gov.br/midia/2017/05/img-user.png">
                             </span>
                             <div class="media-body ml-2 d-none d-lg-block">
                                 <span class="mb-0 text-sm  font-weight-bold">{{ auth()->user()->name }}</span>
@@ -40,28 +39,8 @@
                     </div>
                 </li>
             </ul>
+
         </div>
     </nav>
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
-
-<!-- <script>
-    setInterval(() => {
-        $.ajax({
-            type: "GET",
-            url: "/notifications",
-        }).done(function(res) {
-            var data = res;
-            for (var chave in data) {
-                var result = data[chave];
-                let count=0;
-                // console.log(result[1]['data'][0]['id'])
-              for (let index = 0; index < result.length; index++) {
-                  const element = result[index]['data'][0];
-                  count++
-              }
-              console.log(count)
-            }
-        });
-    }, 3000);
-</script> -->

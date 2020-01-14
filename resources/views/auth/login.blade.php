@@ -3,12 +3,12 @@
 @section('content')
 @include('layouts.headers.guest')
 
-<div class="container mt--8 pb-5">
+<div class="container mt--9 pb-3">
     <div class="row justify-content-center">
         <div class="col-lg-5 col-md-7">
             <div class="card bg-secondary shadow border-0">
-                <div class="card-header bg-transparent pb-5">
-                    <div class="text-muted text-center mt-2 mb-3"><small>{{ __('Sign in with') }}</small></div>
+                <div class="card-header bg-transparent pb-3">
+                    <div class="text-muted text-center mt-2 mb-3"><small>{{ __('Login') }}</small></div>
                 </div>
                 <div class="card-body px-lg-5 py-lg-5">
                    
@@ -44,7 +44,7 @@
                         <div class="custom-control custom-control-alternative custom-checkbox">
                             <input class="custom-control-input" name="remember" id="customCheckLogin" type="checkbox" {{ old('remember') ? 'checked' : '' }}>
                             <label class="custom-control-label" for="customCheckLogin">
-                                <span class="text-muted">{{ __('Remember me') }}</span>
+                                <span class="text-muted">{{ __('Lembrar-me') }}</span>
                             </label>
                         </div>
                         <div class="text-center">
@@ -57,14 +57,9 @@
                 <div class="col-6">
                     @if (Route::has('password.request'))
                     <a href="{{ route('password.request') }}" class="text-light">
-                        <small>{{ __('Forgot password?') }}</small>
+                        <small>{{ __('Esqueceu sua senha?') }}</small>
                     </a>
                     @endif
-                </div>
-                <div class="col-6 text-right">
-                    <a href="{{ route('register') }}" class="text-light">
-                        <small>{{ __('Create new account') }}</small>
-                    </a>
                 </div>
             </div>
         </div>

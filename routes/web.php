@@ -15,19 +15,22 @@ use App\Notifications\NotificationProposals;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
-Auth::routes();
-
-
+Auth::routes(['register' => false]);
 Route::group(['middleware' => 'auth'], function () {
 	Route::group(['middleware' => ['role:admin']], function () {
 		Route::resource('user', 'UserController', ['except' => ['show']]);
 		Route::post('/formulario/{proposta}', 'ManipulationProposalController@alterProposal')->name('alterProposal');
 	});
-	
 	Route::get('/', 'HomeController@index')->name('home');
+	Route::resource('/formulario', 'ProposalController');
+
+	// Profile
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
-	Route::resource('/formulario', 'ProposalController');
+
+	// Notifications
+	Route::get('/notifications', 'NotificationsController@notifications');
+	Route::put('/notification-read', 'NotificationsController@markAsRead');
+	Route::put('/notification-readall', 'NotificationsController@markAllRead');
 });
-Route::get('/notifications', 'NotificationsController@notifications');
