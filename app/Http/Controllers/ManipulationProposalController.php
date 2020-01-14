@@ -6,6 +6,7 @@ use App\Proposal;
 use App\User;
 use Illuminate\Http\Request;
 use App\Notifications\NotificationProposals;
+use Illuminate\Support\Facades\Storage;
 
 class ManipulationProposalController extends Controller
 {
@@ -46,5 +47,11 @@ class ManipulationProposalController extends Controller
                 return redirect()->back();
                 break;
         }
+    }
+
+    public function downloadDocument($id)
+    {
+        $document = Proposal::find($id);
+        return Storage::download($document->documents);
     }
 }

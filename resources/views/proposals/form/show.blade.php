@@ -13,7 +13,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-6">
-                            <h6 class="heading-small text-muted mb-4">{{ __('Informações do usuário') }}</h6>
+                            <h6 class="heading-small text-muted mb-4">{{ __('Informações do Tomador') }}</h6>
                             <p>Nome: <strong> {{ $proposta->customer_name }}</strong> </p>
                             <p>CPF: <strong> {{ $proposta->customer_cpf }}</strong> </p>
                             <p>Salário mensal:<strong>R$ {{ $proposta->customer_monthly_salary }}</strong> </p>
@@ -36,6 +36,7 @@
                         </div>
                         <div class="col-6">
                             <p> Cadastrado em: <strong>{{ date("d/m/y", strtotime($proposta->created_at)) }} </strong></p>
+                            <a class="btn btn-white" href="{{ route('download', $proposta) }}">Download do Documento <i class="fas fa-file-pdf"></i></a>
                         </div>
                     </div>
                 </div>
@@ -70,10 +71,11 @@
                             <button class="btn btn-primary btn-lg btn-block">alterar</button>
                         </div>
                     </form>
-                    @endrole
                 </div>
+                @include('proposals.form.delete', ['proposta' => $proposta])
+                @endrole
             </div>
         </div>
     </div>
-   <script src="{{ url('js/AlterBgColorStatus.js') }}"></script>
+    <script src="{{ url('js/AlterBgColorStatus.js') }}"></script>
     @endsection

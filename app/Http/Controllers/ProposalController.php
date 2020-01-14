@@ -8,6 +8,9 @@ use App\Proposal;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use PharIo\Manifest\RequirementCollection;
+
 class ProposalController extends Controller
 {
     protected $_proposal;
@@ -52,6 +55,7 @@ class ProposalController extends Controller
      */
     public function store(FormProposalRequest $request)
     {
+        // dd($request->documents);
         $form = new Proposal;
         $form->user_id = auth()->user()->id;
         $form->company_type = $request->company_type;
@@ -67,10 +71,21 @@ class ProposalController extends Controller
         $form->guarantor_cpf = $request->guarantor_cpf;
         $form->guarantor_rg = $request->guarantor_rg;
         $form->guarantor_monthly_salary = $request->guarantor_monthly_salary;
+
+        if ($request->hasFile('documents') && $request->file('documents')->isValid()) {
+            $upload = $request->documents->store('documents');
+            $form->documents = $upload;
+            if (!$upload) {
+                return redirect()
+                    ->back()
+                    ->with('error', 'Falha ao enviar imagem');
+            }
+        }
+
         if ($form->save()) {
             $users = User::role('admin')->get();
             $lastProposal = Proposal::orderBy('created_at', 'desc')->first();
-            foreach($users as $adminUser){
+            foreach ($users as $adminUser) {
                 $adminUser->notify(new NotificationProposals($lastProposal));
             }
             return redirect()->route('formulario.index');
@@ -119,8 +134,14 @@ class ProposalController extends Controller
      */
     public function destroy($id)
     {
-        //
+       $proposal = Proposal::findOrfail($id);
+       Storage::delete($proposal->documents);
+       if ($proposal->delete()) {
+           return redirect()->route("formulario.index");
+       } else{
+           return redirect()->back();
+       }
+
     }
 
-   
 }

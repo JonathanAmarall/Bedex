@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="card-body">
-            <form class="form" action="{{ route('formulario.store') }}" method="POST">
+            <form class="form" action="{{ route('formulario.store') }}" method="POST" enctype="multipart/form-data">
                 {!! csrf_field() !!}
 
                 <h3 class="">Estabelecimento:</h3>
@@ -75,7 +75,7 @@
                     </div>
                     <div class="col-sm col-md-4">
                         <label for="salarioTomador">Salário mensal R$: *</label>
-                        <input type="number" id="salarioTomador" name="customer_monthly_salary" class="form-control" placeholder="1500,00" required>
+                        <input type="text" id="salarioTomador" name="customer_monthly_salary" class="form-control money" placeholder="1500,00" required>
                     </div>
                 </div>
                 <div class="form-row">
@@ -101,7 +101,7 @@
                     </div>
                     <div class="col-md-4">
                         <label for="salarioAvalista">Salário mensal R$: *</label>
-                        <input type="number" id="salarioAvalista" name="guarantor_monthly_salary" class="form-control" placeholder="1500,00" required>
+                        <input type="text" id="salarioAvalista" name="guarantor_monthly_salary" class="form-control money" placeholder="1500,00" required>
                     </div>
                 </div>
                 <div class="row-form">

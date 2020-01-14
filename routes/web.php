@@ -20,6 +20,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::group(['middleware' => ['role:admin']], function () {
 		Route::resource('user', 'UserController', ['except' => ['show']]);
 		Route::post('/formulario/{proposta}', 'ManipulationProposalController@alterProposal')->name('alterProposal');
+		Route::get('/formulario/{proposta}/download', 'ManipulationProposalController@downloadDocument')->name('download');
 	});
 	Route::get('/', 'HomeController@index')->name('home');
 	Route::resource('/formulario', 'ProposalController');
