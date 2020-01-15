@@ -99,6 +99,8 @@ class CreateProposalsTable extends Migration
             // Pessoa Física:
             $table->string('documents')->nullable();
 
+            $table->text('obs')->nullable();
+            $table->boolean('avaliable');
 
             $table->foreign('user_id')
                 ->references('id')->on('users');
