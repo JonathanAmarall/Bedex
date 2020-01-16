@@ -1,18 +1,4 @@
 <?php
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-use App\Notifications\NotificationProposals;
-use App\User;
 use Illuminate\Support\Facades\Auth;
 
 Auth::routes(['register' => false]);
@@ -34,4 +20,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/notifications', 'NotificationsController@notifications');
 	Route::put('/notification-read', 'NotificationsController@markAsRead');
 	Route::put('/notification-readall', 'NotificationsController@markAllRead');
+	// obs obsDestroy
+	Route::post('/formulario/{proposta}/obs', 'ObsProposalController@store')->name('obsStore');
+	Route::delete('/formulario/{proposta}/obs/{id}', 'ObsProposalController@destroy')->name('obsDestroy');
+
 });

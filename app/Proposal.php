@@ -62,7 +62,4 @@ class Proposal extends Model
             $adminUser->notify(new NotificationProposals($lastProposal));
         }
     }
-
-
-   
 }

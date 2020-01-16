@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FormProposalRequest;
+use App\ObsProposal;
 use App\Proposal;
 use App\User;
 use Illuminate\Http\Request;
@@ -77,7 +78,9 @@ class ProposalController extends Controller
     public function show($id)
     {
         $proposta = Proposal::find($id);
-        return view('proposals.form.show', compact('proposta'));
+        $obs = ObsProposal::where('proposal_id',$id)->get();
+        // dd($obs);
+        return view('proposals.form.show', compact('proposta', 'obs'));
     }
 
     /**

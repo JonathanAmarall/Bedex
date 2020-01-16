@@ -4,7 +4,7 @@
 <div class="container p-2">
     <div class="row">
         <div class="col-xl-8 mb-4 mb-xl-0">
-            <div class="card card-profile  shadow">
+            <div class="card card-profile shadow">
                 <div class="card-header bg-transparent">
                     <strong>
                         <h2>Dados da Proposta:</h2>
@@ -26,8 +26,7 @@
                             <p>CPF: <strong>{{ $proposta->guarantor_cpf }}</strong> </p>
                             <p>Salário mensal: <strong>R$ {{ $proposta->guarantor_monthly_salary }}</strong> </p>
                         </div>
-                        <label for="obs">Observação:</label>
-                        <textarea class="form-control" name="obs" id="obs" cols="15" rows="2"></textarea>
+
                     </div>
                     <hr>
                     <div class="row">
@@ -86,6 +85,71 @@
                 @endrole
             </div>
         </div>
+        <div class="col-xl-8 mb-4 mb-xl-0">
+            <div class="accordion" id="accordion">
+                <div class="card shadow">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <h3>Observações <i class="fas fa-sort-down"></i></h3>
+                            </button>
+                            <button class="btn btn-link float-right" data-toggle="modal" data-target="#Modal"><i class="fas fa-plus-circle text-success fa-2x"></i></button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table ">
+                                    <tbody>
+                                        @foreach($obs as $o)
+                                        <tr>
+                                            <td>{{ date("d/m/y", strtotime($o->created_at)) }}</td>
+                                            <td>{{ $o->obs }}</td>
+                                            <form action="{{  route('obsDestroy', [$proposta, $o]) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <td> <button class="btn btn-link"><i class="fas fa-times text-danger"></i></button></td>
+                                            </form>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- modal add obs -->
+                <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="ModalLabel">Adicionar observação:</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="{{ route('obsStore', $proposta) }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="proposal_id" value="{{ $proposta->id }}">
+                                    <div class="form-group">
+                                        <label for="message-text" class="col-form-label">Observação:</label>
+                                        <textarea name="obs" class="form-control" rows="5" id="message-text"></textarea>
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
     <script src="{{ url('js/AlterBgColorStatus.js') }}"></script>
     @endsection

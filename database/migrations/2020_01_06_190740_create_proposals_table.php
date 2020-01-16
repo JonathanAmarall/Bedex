@@ -35,7 +35,6 @@ class CreateProposalsTable extends Migration
             $table->string('status')->default('Em análise');
             $table->unsignedBigInteger('user_id');
 
-
             // customer address
             $table->string('customer_streed_number')->nullable();
             $table->string('customer_city')->nullable();
@@ -57,13 +56,12 @@ class CreateProposalsTable extends Migration
             $table->string('guarantor_cpf');
             $table->string('guarantor_rg')->nullable();
             $table->string('guarantor_monthly_salary');
-
             $table->string('guarantor_uf')->nullable();
             $table->date('guarantor_date_birth')->nullable();
             $table->string('guarantor_phone')->nullable();
             $table->string('guarantor_address')->nullable();
 
-            // Guarantor company
+            // Guarantor company work
             $table->string('guarantor_company_work')->nullable();
             $table->string('guarantor_city_company')->nullable();
             $table->string('guarantor_phone_commercial')->nullable();
