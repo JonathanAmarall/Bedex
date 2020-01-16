@@ -16,8 +16,11 @@ class ManipulationProposalController extends Controller
 
         switch ($request->status) {
             case ("Aprovado"):
+                $proposta->status = "Aprovado";
+                $proposta->avaliable = true;
+                $proposta->save();
                 User::find($proposta->user_id)->notify(new NotificationProposals($proposta));
-                return view('proposals.form.edit', compact('proposta'));
+                return redirect()->back();
                 break;
             case ("Reprovado"):
                 $proposta->status = "Reprovado";

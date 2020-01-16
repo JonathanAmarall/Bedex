@@ -35,6 +35,8 @@ class FormProposalRequest extends FormRequest
             'guarantor_name'          => 'required|min:2|max:100',
             'guarantor_cpf'           => 'required',
             'guarantor_monthly_salary'=> 'required',
+
+            'number_installments'                   => 'required|integer|between:1,70'  
         ];
     }
 }

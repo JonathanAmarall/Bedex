@@ -3,23 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FormProposalRequest;
-use App\Notifications\NotificationProposals;
 use App\Proposal;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use PharIo\Manifest\RequirementCollection;
 
 class ProposalController extends Controller
 {
     protected $_proposal;
-    protected $user;
 
     public function __construct(Proposal $proposal, User $user)
     {
         $this->_proposal = $proposal;
-        $this->user = $user;
     }
     /**
      * Display a listing of the resource.
@@ -55,42 +51,23 @@ class ProposalController extends Controller
      */
     public function store(FormProposalRequest $request)
     {
-        // dd($request->documents);
-        $form = new Proposal;
-        $form->user_id = auth()->user()->id;
-        $form->company_type = $request->company_type;
-        $form->company_name = $request->company_name;
-        $form->company_replyemail = $request->company_replyemail;
-        $form->company_city = $request->company_city;
-        $form->customer_name = $request->customer_name;
-        $form->customer_cpf = $request->customer_cpf;
-        $form->customer_monthly_salary = $request->customer_monthly_salary;
-        $form->value = $request->value;
-
-        $form->guarantor_name = $request->guarantor_name;
-        $form->guarantor_cpf = $request->guarantor_cpf;
-        $form->guarantor_rg = $request->guarantor_rg;
-        $form->guarantor_monthly_salary = $request->guarantor_monthly_salary;
-
+        $data = $request->all();
         if ($request->hasFile('documents') && $request->file('documents')->isValid()) {
             $upload = $request->documents->store('documents');
-            $form->documents = $upload;
+            $data['documents'] = $upload;
             if (!$upload) {
                 return redirect()
                     ->back()
-                    ->with('error', 'Falha ao enviar imagem');
+                    ->with('error', 'Falha ao enviar documento.');
             }
         }
-
-        if ($form->save()) {
-            $users = User::role('admin')->get();
-            $lastProposal = Proposal::orderBy('created_at', 'desc')->first();
-            foreach ($users as $adminUser) {
-                $adminUser->notify(new NotificationProposals($lastProposal));
-            }
+        if ($this->_proposal->create($data)) {
+            $this->_proposal->sendNotificationForAdmins();
             return redirect()->route('formulario.index');
         }
     }
+
+
     /**
      * Display the specified resource.
      *
@@ -111,7 +88,8 @@ class ProposalController extends Controller
      */
     public function edit($id)
     {
-        echo "editando $id";
+        $proposta = Proposal::find($id);
+        return view('proposals.form.edit', compact('proposta'));
     }
 
     /**
@@ -123,7 +101,21 @@ class ProposalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $proposta = $this->_proposal->find($id);
+        $data = $request->all();
+        if ($request->hasFile('documents') && $request->file('documents')->isValid()) {
+            $upload = $request->documents->store('documents');
+            $data['documents'] = $upload;
+            if (!$upload) {
+                return redirect()
+                    ->back()
+                    ->with('error', 'Falha ao enviar documento.');
+            }
+        }
+        if ($proposta->update($data)) {
+            $this->_proposal->sendNotificationForAdmins();
+            return redirect("/formulario/$id");
+        }
     }
 
     /**
@@ -134,14 +126,12 @@ class ProposalController extends Controller
      */
     public function destroy($id)
     {
-       $proposal = Proposal::findOrfail($id);
-       Storage::delete($proposal->documents);
-       if ($proposal->delete()) {
-           return redirect()->route("formulario.index");
-       } else{
-           return redirect()->back();
-       }
-
+        $proposal = Proposal::findOrfail($id);
+        Storage::delete($proposal->documents);
+        if ($proposal->delete()) {
+            return redirect()->route("formulario.index");
+        } else {
+            return redirect()->back();
+        }
     }
-
 }

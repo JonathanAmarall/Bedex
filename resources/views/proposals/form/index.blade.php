@@ -25,7 +25,7 @@
                         <td>{{ $p->status }}</td>
                         <td><a href="mailto:{{ $p->company_replyemail }}">{{ $p->company_replyemail }}</a> </td>
                         <td>{{ date("d/m/y", strtotime($p->created_at))  }} </td>
-                        <td>{{ number_format($p->value, 2,',', '')  }}</td>
+                        <td>{{ $p->value }}</td>
                         <td><a href="{{ route('formulario.show', $p) }}" class="btn btn-light">visualizar </a></td>
                     </tr>
                 @endforeach

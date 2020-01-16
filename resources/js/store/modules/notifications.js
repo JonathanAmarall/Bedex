@@ -19,7 +19,6 @@ export default {
         loadNotifications(context) {
             axios.get("/notifications")
                 .then(res => {
-                    console.log(res);
                     context.commit('LOAD_NOTIFICATIONS', res.data.notifications);
                 });
             context.dispatch('loadNotificationsForTime');

@@ -15,14 +15,7 @@ class CreateProposalsTable extends Migration
     {
         Schema::create('proposals', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('status')->default('Em análise');
-            $table->unsignedBigInteger('user_id');
 
-            $table->string('company_type');
-            $table->string('company_name');
-            $table->string('company_replyemail');
-            $table->string('company_city');
-            
             //data customer
             $table->string('customer_name');
             $table->string('customer_cpf');
@@ -32,6 +25,16 @@ class CreateProposalsTable extends Migration
             $table->date('customer_date_birth')->nullable();
             $table->string('customer_name_mother')->nullable();
             $table->string('customer_martial_status')->nullable();
+
+            // data company 
+            $table->string('company_type');
+            $table->string('company_name');
+            $table->string('company_replyemail');
+            $table->string('company_city');
+
+            $table->string('status')->default('Em análise');
+            $table->unsignedBigInteger('user_id');
+
 
             // customer address
             $table->string('customer_streed_number')->nullable();
@@ -70,7 +73,7 @@ class CreateProposalsTable extends Migration
             $table->string('guarantor_remuneration')->nullable();
 
             // trading form
-            $table->decimal('value');
+            $table->string('value');
             $table->integer('number_installments')->nullable();
             $table->integer('date_first_installments')->nullable();
 
@@ -100,7 +103,7 @@ class CreateProposalsTable extends Migration
             $table->string('documents')->nullable();
 
             $table->text('obs')->nullable();
-            $table->boolean('avaliable');
+            $table->boolean('avaliable')->default(false);
 
             $table->foreign('user_id')
                 ->references('id')->on('users');

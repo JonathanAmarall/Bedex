@@ -51534,7 +51534,6 @@ __webpack_require__.r(__webpack_exports__);
   actions: {
     loadNotifications: function loadNotifications(context) {
       axios.get("/notifications").then(function (res) {
-        console.log(res);
         context.commit('LOAD_NOTIFICATIONS', res.data.notifications);
       });
       context.dispatch('loadNotificationsForTime');
@@ -51603,8 +51602,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\jhoua\Desktop\bedex\bedex\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\jhoua\Desktop\bedex\bedex\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Prog\Desktop\bedex\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Prog\Desktop\bedex\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

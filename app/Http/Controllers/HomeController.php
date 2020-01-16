@@ -28,14 +28,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-       
-
-        // return  str_replace(array('(', ')'), '', $notify['data']);
         if (Auth::user()->hasRole('admin')) {
             $proposalsOfTheMonth = DB::table('proposals')
                 ->whereMonth('created_at', 1)
                 ->count();
-            return view('dashboard', compact('proposalsOfTheMonth', ));
+            return view('dashboard', compact('proposalsOfTheMonth'));
         } else {
             $currentMonth = Carbon::now()->month;
             $proposalsOfTheMonth = DB::table('proposals')
