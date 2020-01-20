@@ -18,15 +18,15 @@
             </thead>
             <tbody>
                 @foreach($propostas as $p)
-                    <tr>
-                        <td>{{ $p->customer_name }} </td>
-                        <td>{{ $p->company_name }}</td>
-                        <td>{{ $p->status }}</td>
-                        <td><a href="mailto:{{ $p->company_replyemail }}">{{ $p->company_replyemail }}</a> </td>
-                        <td>{{ date("d/m/y", strtotime($p->created_at))  }} </td>
-                        <td>{{ $p->value }}</td>
-                        <td><a href="{{ route('formulario.show', $p) }}" class="btn btn-light">visualizar </a></td>
-                    </tr>
+                <tr>
+                    <td>{{ $p->customer_name }} </td>
+                    <td>{{ $p->company_name }}</td>
+                    <td>{{ $p->status }}</td>
+                    <td><a href="mailto:{{ $p->company_replyemail }}">{{ $p->company_replyemail }}</a> </td>
+                    <td>{{ date("d/m/y", strtotime($p->created_at))  }} </td>
+                    <td>{{ $p->value }}</td>
+                    <td><a href="{{ route('formulario.show', $p) }}" class="btn btn-light">visualizar </a></td>
+                </tr>
                 @endforeach
             </tbody>
             <tfoot>
@@ -42,8 +42,5 @@
             </tfoot>
         </table>
     </div>
-
 </div>
-
-
 @endsection

@@ -1,13 +1,21 @@
 <template>
-  <h1>componente teste</h1>
+  <div>
+    <InputRangeValue></InputRangeValue>
+    <buttons></buttons>
+  </div>
 </template>
 
 <script>
-export default {
+import InputRangeValue from "../partials/simulator/InputRangeValue";
+import Buttons from "../partials/simulator/Buttons";
 
-}
+export default {
+  components: { InputRangeValue, Buttons },
+  data() {
+    return {};
+  }
+};
 </script>
 
 <style>
-
 </style>
