@@ -6,6 +6,8 @@ use App\Proposal;
 use App\User;
 use Illuminate\Http\Request;
 use App\Notifications\NotificationProposals;
+use Exception;
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Support\Facades\Storage;
 
 class ManipulationProposalController extends Controller
@@ -55,6 +57,12 @@ class ManipulationProposalController extends Controller
     public function downloadDocument($id)
     {
         $document = Proposal::find($id);
-        return Storage::download($document->documents);
+        try {
+            return Storage::download($document->documents);
+        } catch (Exception $e) {
+            return redirect()
+                ->back()
+                ->with('error', "Não possui há documentos para serem baixados.");
+        }
     }
 }

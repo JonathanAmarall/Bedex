@@ -3,6 +3,14 @@
 @include('layouts.headers.cards-form')
 <div class="container p-2">
     <div class="row">
+        <div class="col-sm-12 mb-3 mb-sm-0 pt-3">
+            @if (session('error'))
+            <div class="alert alert-danger" role="alert">
+                {{ session('error') }}
+            </div>
+            @endif
+        </div>
+
         <div class="col-xl-8 mb-4 mb-xl-0">
             <div class="card card-profile shadow">
                 <div class="card-header bg-transparent">
@@ -40,11 +48,13 @@
                         <div class="col-sm-6">
                             <p> Cadastrado em: <strong>{{ date("d/m/y", strtotime($proposta->created_at)) }} </strong></p>
                             <a class="btn btn-white" href="{{ route('download', $proposta) }}">Download do Documento <i class="fas fa-file-pdf"></i></a>
+
                             <div class="pt-4">
                                 <a href="{{ route('formulario.edit', $proposta ) }}" class="btn btn-light">Editar</a>
                                 @if($proposta->avaliable == true)
                                 <a href="#" class="btn btn-success">Finalizar cadastro</a>
                                 @endif
+
                             </div>
                         </div>
                     </div>

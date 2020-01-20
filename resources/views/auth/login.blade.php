@@ -2,12 +2,12 @@
 
 @section('content')
 @include('layouts.headers.guest')
-
 <div class="container mt--9 pb-3">
     <div class="row justify-content-center">
         <div class="col-lg-5 col-md-7">
             <div class="card bg-secondary shadow border-0">
                 <div class="card-header bg-transparent pb-3">
+                    <div class="text-dark text-center">Bem vindo ao Bedex</div>
                     <div class="text-muted text-center mt-2 mb-3"><small>{{ __('Login') }}</small></div>
                 </div>
                 <div class="card-body px-lg-5 py-lg-5">
