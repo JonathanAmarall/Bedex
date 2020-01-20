@@ -1,4 +1,3 @@
-<div id="app">
 
     <!-- Top navbar -->
     <link type="text/css" href="{{ asset('css/app.css') }}">
@@ -42,5 +41,4 @@
 
         </div>
     </nav>
-</div>
-<script src="{{ asset('js/app.js') }}"></script>
+

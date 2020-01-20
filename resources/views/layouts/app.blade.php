@@ -25,22 +25,24 @@
 </head>
 
 <body class="{{ $class ?? '' }}">
+    <div id="app">
 
-    @auth()
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-        @csrf
-    </form>
-    @include('layouts.navbars.sidebar')
-    @endauth
 
-    <div class="main-content">
-        @include('layouts.navbars.navbar')
-        @yield('content')
+        @auth()
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
+        @include('layouts.navbars.sidebar')
+        @endauth
+
+        <div class="main-content">
+            @include('layouts.navbars.navbar')
+            @yield('content')
+        </div>
     </div>
+    <script src="{{ asset('js/app.js') }}"></script>
 
-    @guest()
-    @include('layouts.footers.guest')
-    @endguest
+
 
     <!-- <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script> -->
     <script src="{{ asset('argon') }}/vendor/jquery/jquery.mask.js"></script>
@@ -48,6 +50,28 @@
     @stack('js')
     <!-- Argon JS -->
     <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#table').DataTable({
+                "language": {
+                    "lengthMenu": "Exibir _MENU_ registros por página",
+                    "zeroRecords": "Nada encontrado - desculpe",
+                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "infoEmpty": "Nenhum registro disponível",
+                    "infoFiltered": "(filtered from _MAX_ total de registros)"
+                }
+            });
+        });
+    </script>
+
+    <script src="{{ asset('argon') }}/vendor/jquery/jquery.mask.js"></script>
+
+    <script src="{{ url('js/AlterBgColorStatus.js') }}"></script>
+
+
 </body>
 
 </html>

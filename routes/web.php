@@ -24,4 +24,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/formulario/{proposta}/obs', 'ObsProposalController@store')->name('obsStore');
 	Route::delete('/formulario/{proposta}/obs/{id}', 'ObsProposalController@destroy')->name('obsDestroy');
 
+	Route::resource('/simulador', 'SimulatorController');
+
 });

@@ -2,7 +2,6 @@
 
 @section('content')
 @include('layouts.headers.cards-form')
-<!-- <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script> -->
 <div class="container p-1">
     <div class="table-responsive">
         <table id="table" class="display" style="width:100%">
@@ -45,20 +44,6 @@
     </div>
 
 </div>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#table').DataTable({
-            "language": {
-                "lengthMenu": "Exibir _MENU_ registros por página",
-                "zeroRecords": "Nada encontrado - desculpe",
-                "info": "Mostrando página _PAGE_ de _PAGES_",
-                "infoEmpty": "Nenhum registro disponível",
-                "infoFiltered": "(filtered from _MAX_ total de registros)"
-            }
-        });
-    });
-</script>
+
 
 @endsection

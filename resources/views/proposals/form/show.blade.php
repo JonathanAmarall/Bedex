@@ -2,8 +2,9 @@
 @section('content')
 @include('layouts.headers.cards-form')
 <div class="container p-2">
+
     <div class="row">
-        <div class="col-sm-12 mb-3 mb-sm-0 pt-3">
+        <div class="col-sm-8 mb-3 mb-sm-0 pt-3">
             @if (session('error'))
             <div class="alert alert-danger" role="alert">
                 {{ session('error') }}
@@ -34,7 +35,6 @@
                             <p>CPF: <strong>{{ $proposta->guarantor_cpf }}</strong> </p>
                             <p>Salário mensal: <strong>R$ {{ $proposta->guarantor_monthly_salary }}</strong> </p>
                         </div>
-
                     </div>
                     <hr>
                     <div class="row">
@@ -61,6 +61,7 @@
                 </div>
             </div>
         </div>
+
         <div class="col-xl-4">
             <div class="card bg-gradient-default shadow">
                 <div class="card-header bg-transparent">
@@ -95,6 +96,7 @@
                 @endrole
             </div>
         </div>
+
         <div class="col-xl-8 mb-4 mb-xl-0">
             <div class="accordion" id="accordion">
                 <div class="card shadow">
@@ -160,6 +162,6 @@
             </div>
         </div>
     </div>
+</div>
 
-    <script src="{{ url('js/AlterBgColorStatus.js') }}"></script>
-    @endsection
+@endsection

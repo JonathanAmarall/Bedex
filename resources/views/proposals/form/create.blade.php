@@ -118,5 +118,4 @@
     </div>
 
 </div>
-<script src="{{ asset('argon') }}/vendor/jquery/jquery.mask.js"></script>
 @endsection

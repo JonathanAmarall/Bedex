@@ -12,6 +12,7 @@ Vue.config.productionTip = false;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 // Vue.use(BootstrapVue)
 Vue.component('notifications', require('./components/Notifications.vue').default)
+Vue.component('simulator', require('./components/Simulator.vue').default)
 
 const app = new Vue({
     store,
