@@ -46,11 +46,11 @@
       </div>
       <div class="col-sm-6">
         <div class="row pt-3">
-          <div class="col-6">
+          <div class="col-sm-6">
             <label for="otherValue">Outro prazo:</label>
             <input type="number" class="form-control inputFormat" id="otherValue" />
           </div>
-          <div class="col-6">
+          <div class="col-sm-6">
             <label for="interestDays">Dias juros (max 20):</label>
             <input
               type="number"
