@@ -15,7 +15,7 @@
             <th scope="col">Prazo (meses):</th>
             <td>{{ simulator.term }}</td>
           </tr>
-           <tr>
+          <tr>
             <th scope="col">Tarifa de cobrança:</th>
             <td>R${{ simulator.collectionFee.toFixed(2) }}</td>
           </tr>
@@ -26,6 +26,10 @@
           <tr>
             <th scope="col">Tarifa de consulta:</th>
             <td>R${{ simulator.consultationFee.toFixed(2) }}</td>
+          </tr>
+          <tr>
+            <th scope="col">Dias Juros (ajuste parcela):</th>
+            <td>R${{ simulator.interestDays }}</td>
           </tr>
         </tbody>
       </table>
@@ -71,14 +75,13 @@
 <script>
 export default {
   data() {
-    return {
-    };
+    return {};
   },
-  computed:{
-      simulator(){
-          console.log(this.$store.state.simulator.simulatorData)
-          return this.$store.state.simulator.simulatorData
-      }
+  computed: {
+    simulator() {
+      console.log(this.$store.state.simulator.simulatorData);
+      return this.$store.getters.simulatorData;
+    }
   }
 };
 </script>
