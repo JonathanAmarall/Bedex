@@ -1,9 +1,10 @@
 <template>
-  <div class="col-xm-12 col-sm-6">
-    <div class="card shadow p-1">
-      <div class="card-body">
+    <div class="">
+      <div class="">
         <h1>Qual o valor do empréstimo?</h1>
-        Valor: {{ val }}
+      </div>
+      <div class="">
+        <h2 class="txtValue">Valor: R${{ val }},00</h2>
         <input
           type="range"
           class="slider"
@@ -15,7 +16,6 @@
         />
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -32,6 +32,9 @@ export default {
 </script>
 
 <style>
+.txtValue {
+  text-align: center
+}
 .slider {
   -webkit-appearance: none;
   width: 100%;
