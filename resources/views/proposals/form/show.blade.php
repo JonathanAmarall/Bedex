@@ -73,7 +73,7 @@
                         <p align="center" id="status" class="p-3">{{$proposta->status }}</p>
                     </div>
                     <hr>
-                    @role('admin')
+                   @role('admin')
                     <form action="{{ route('alterProposal', $proposta) }}" method="POST">
                         {!! csrf_field() !!}
 
@@ -91,9 +91,9 @@
                             <button class="btn btn-primary btn-lg btn-block">alterar</button>
                         </div>
                     </form>
+                    @include('proposals.form.delete', ['proposta' => $proposta])
+                    @endrole
                 </div>
-                @include('proposals.form.delete', ['proposta' => $proposta])
-                @endrole
             </div>
         </div>
 

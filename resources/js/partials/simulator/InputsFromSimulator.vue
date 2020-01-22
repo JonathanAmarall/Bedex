@@ -1,72 +1,52 @@
 <template>
-  <div>
+  <div class="col-sm">
     <div class="row">
-      <div class="col-xl-12 col-sm-12 col-md-6">
-        <h1>Qual o valor do empréstimo?</h1>
+      <div class="col-sm">
+        <h1 class="txtValue">Qual o valor do empréstimo?</h1>
         <div>
-          <h2 class="txtValue">Valor: R${{ val }},00</h2>
+          <h2 class="txtValue pt-3">Valor: R${{ data.val }},00</h2>
           <input
             type="range"
             class="slider"
-            v-model="val"
-            :min="inputRange.min"
-            :max="inputRange.max"
-            :step="inputRange.step"
-            id="range"
+            v-model="data.val"
+            :min="dataInputRangeLoan.min"
+            :max="dataInputRangeLoan.max"
+            :step="dataInputRangeLoan.step"
+            id="range1"
           />
         </div>
       </div>
     </div>
     <hr />
-    <div class="row justify-content-center">
-      <div class="col-sm-6">
-        <h1 class>Quantas vezes?</h1>
-        <div class="btn-group-toggle" data-toggle="buttons">
-          <label class="btn btn-primary btn-lg">
-            3x
-            <input type="radio" name="value" value="3" autocomplete="off" />
-          </label>
-          <label class="btn btn-primary btn-lg">
-            6x
-            <input type="radio" name="value" value="6" autocomplete="off" />
-          </label>
-          <label class="btn btn-primary btn-lg">
-            12x
-            <input type="radio" name="value" value="12" autocomplete="off" />
-          </label>
-          <label class="btn btn-primary btn-lg">
-            16x
-            <input type="radio" name="value" value="16" autocomplete="off" />
-          </label>
-          <label class="btn btn-primary btn-lg">
-            24x
-            <input type="radio" name="value" value="24" autocomplete="off" />
-          </label>
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 class="txtValue">Quantas vezes?</h1>
+
+        <div>
+          <h2 class="txtValue pt-3">{{ data.term }}X</h2>
+          <input
+            type="range"
+            class="slider"
+            v-model="data.term"
+            :step="dataInputRangeTimes.step"
+            :min="dataInputRangeTimes.min"
+            :max="dataInputRangeTimes.max"
+            id="range2"
+          />
         </div>
       </div>
+    </div>
+
+    <div class="row">
       <div class="col-sm-6">
-        <div class="row pt-3">
-          <div class="col-sm-6">
-            <label for="otherValue">Outro prazo:</label>
-            <input type="number" class="form-control inputFormat" id="otherValue" />
-          </div>
-          <div class="col-sm-6">
-            <label for="interestDays">Dias juros (max 20):</label>
-            <input
-              type="number"
-              min="0"
-              max="20"
-              class="form-control inputFormat"
-              id="interestDays"
-            />
-          </div>
-        </div>
+        <label for="interestDays">Dias juros:</label>
+        <input type="number" min="0" max="20" class="form-control inputFormat" id="interestDays" />
       </div>
     </div>
 
     <div class="row justify-content-center pt-5">
       <div class="col-6">
-        <button class="btn btn-success btn-block">Simular</button>
+        <button @click.prevent="calculateFinancing(data)" class="btn btn-success btn-block">Simular</button>
       </div>
     </div>
   </div>
@@ -76,12 +56,25 @@
 export default {
   data() {
     return {
-      val: 1000
+      data: {
+        val: 1000,
+        term: 3,
+        interestDays: 0
+      }
     };
   },
   computed: {
-    inputRange() {
-      return this.$store.getters.dataInputRange;
+    dataInputRangeLoan() {
+      return this.$store.getters.dataInputRangeLoan;
+    },
+    dataInputRangeTimes() {
+      return this.$store.getters.dataInputRangeTimes;
+    }
+  },
+  methods: {
+    calculateFinancing(data) {
+      console.log(data)
+      this.$store.commit('calculateFinancing', data)
     }
   }
 };
@@ -124,5 +117,12 @@ export default {
 
 .inputFormat {
   width: 50%;
+}
+
+.radioButton {
+  visibility: hidden;
+}
+.bgColorButton {
+  background-color: rgb(50, 50, 218);
 }
 </style>

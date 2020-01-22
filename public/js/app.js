@@ -2143,35 +2143,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      val: 1000
+      data: {
+        val: 1000,
+        term: 3,
+        interestDays: 0
+      }
     };
   },
   computed: {
-    inputRange: function inputRange() {
-      return this.$store.getters.dataInputRange;
+    dataInputRangeLoan: function dataInputRangeLoan() {
+      return this.$store.getters.dataInputRangeLoan;
+    },
+    dataInputRangeTimes: function dataInputRangeTimes() {
+      return this.$store.getters.dataInputRangeTimes;
+    }
+  },
+  methods: {
+    calculateFinancing: function calculateFinancing(data) {
+      console.log(data);
+      this.$store.commit('calculateFinancing', data);
     }
   }
 });
@@ -6856,7 +6849,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.txtValue {\r\n  text-align: center;\n}\n.slider {\r\n  -webkit-appearance: none;\r\n  width: 100%;\r\n  height: 25px;\r\n  background: #d3d3d3;\r\n  outline: none;\r\n  opacity: 0.7;\r\n  -webkit-transition: 0.2s;\r\n  -webkit-transition: opacity 0.2s;\r\n  transition: opacity 0.2s;\n}\n.slider:hover {\r\n  opacity: 1;\n}\n.slider::-webkit-slider-thumb {\r\n  -webkit-appearance: none;\r\n  appearance: none;\r\n  width: 25px;\r\n  height: 25px;\r\n  background: #4caf50;\r\n  cursor: pointer;\n}\n.slider::-moz-range-thumb {\r\n  width: 25px;\r\n  height: 25px;\r\n  background: #4caf50;\r\n  cursor: pointer;\n}\n.inputFormat {\r\n  width: 50%;\n}\r\n", ""]);
+exports.push([module.i, "\n.txtValue {\r\n  text-align: center;\n}\n.slider {\r\n  -webkit-appearance: none;\r\n  width: 100%;\r\n  height: 25px;\r\n  background: #d3d3d3;\r\n  outline: none;\r\n  opacity: 0.7;\r\n  -webkit-transition: 0.2s;\r\n  -webkit-transition: opacity 0.2s;\r\n  transition: opacity 0.2s;\n}\n.slider:hover {\r\n  opacity: 1;\n}\n.slider::-webkit-slider-thumb {\r\n  -webkit-appearance: none;\r\n  appearance: none;\r\n  width: 25px;\r\n  height: 25px;\r\n  background: #4caf50;\r\n  cursor: pointer;\n}\n.slider::-moz-range-thumb {\r\n  width: 25px;\r\n  height: 25px;\r\n  background: #4caf50;\r\n  cursor: pointer;\n}\n.inputFormat {\r\n  width: 50%;\n}\n.radioButton {\r\n  visibility: hidden;\n}\n.bgColorButton {\r\n  background-color: rgb(50, 50, 218);\n}\r\n", ""]);
 
 // exports
 
@@ -38552,13 +38545,13 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "card" }, [
+    _c("div", { staticClass: "card col-sm" }, [
       _c("div", { staticClass: "card-body" }, [
         _c("div", [_c("InputsFromSimulator")], 1),
         _vm._v(" "),
         _c("hr"),
         _vm._v(" "),
-        _c("div", { staticClass: "d-none pt-2" }, [_c("TableResult")], 1)
+        _c("div", { staticClass: "pt-2" }, [_c("TableResult")], 1)
       ])
     ])
   ])
@@ -38675,14 +38668,16 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "col-sm" }, [
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-xl-12 col-sm-12 col-md-6" }, [
-        _c("h1", [_vm._v("Qual o valor do empréstimo?")]),
+      _c("div", { staticClass: "col-sm" }, [
+        _c("h1", { staticClass: "txtValue" }, [
+          _vm._v("Qual o valor do empréstimo?")
+        ]),
         _vm._v(" "),
         _c("div", [
-          _c("h2", { staticClass: "txtValue" }, [
-            _vm._v("Valor: R$" + _vm._s(_vm.val) + ",00")
+          _c("h2", { staticClass: "txtValue pt-3" }, [
+            _vm._v("Valor: R$" + _vm._s(_vm.data.val) + ",00")
           ]),
           _vm._v(" "),
           _c("input", {
@@ -38690,22 +38685,22 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.val,
-                expression: "val"
+                value: _vm.data.val,
+                expression: "data.val"
               }
             ],
             staticClass: "slider",
             attrs: {
               type: "range",
-              min: _vm.inputRange.min,
-              max: _vm.inputRange.max,
-              step: _vm.inputRange.step,
-              id: "range"
+              min: _vm.dataInputRangeLoan.min,
+              max: _vm.dataInputRangeLoan.max,
+              step: _vm.dataInputRangeLoan.step,
+              id: "range1"
             },
-            domProps: { value: _vm.val },
+            domProps: { value: _vm.data.val },
             on: {
               __r: function($event) {
-                _vm.val = $event.target.value
+                return _vm.$set(_vm.data, "val", $event.target.value)
               }
             }
           })
@@ -38715,9 +38710,62 @@ var render = function() {
     _vm._v(" "),
     _c("hr"),
     _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-12" }, [
+        _c("h1", { staticClass: "txtValue" }, [_vm._v("Quantas vezes?")]),
+        _vm._v(" "),
+        _c("div", [
+          _c("h2", { staticClass: "txtValue pt-3" }, [
+            _vm._v(_vm._s(_vm.data.term) + "X")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.data.term,
+                expression: "data.term"
+              }
+            ],
+            staticClass: "slider",
+            attrs: {
+              type: "range",
+              step: _vm.dataInputRangeTimes.step,
+              min: _vm.dataInputRangeTimes.min,
+              max: _vm.dataInputRangeTimes.max,
+              id: "range2"
+            },
+            domProps: { value: _vm.data.term },
+            on: {
+              __r: function($event) {
+                return _vm.$set(_vm.data, "term", $event.target.value)
+              }
+            }
+          })
+        ])
+      ])
+    ]),
+    _vm._v(" "),
     _vm._m(0),
     _vm._v(" "),
-    _vm._m(1)
+    _c("div", { staticClass: "row justify-content-center pt-5" }, [
+      _c("div", { staticClass: "col-6" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-success btn-block",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.calculateFinancing(_vm.data)
+              }
+            }
+          },
+          [_vm._v("Simular")]
+        )
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -38725,116 +38773,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row justify-content-center" }, [
+    return _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-sm-6" }, [
-        _c("h1", {}, [_vm._v("Quantas vezes?")]),
+        _c("label", { attrs: { for: "interestDays" } }, [
+          _vm._v("Dias juros:")
+        ]),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "btn-group-toggle",
-            attrs: { "data-toggle": "buttons" }
-          },
-          [
-            _c("label", { staticClass: "btn btn-primary btn-lg" }, [
-              _vm._v("\n          3x\n          "),
-              _c("input", {
-                attrs: {
-                  type: "radio",
-                  name: "value",
-                  value: "3",
-                  autocomplete: "off"
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("label", { staticClass: "btn btn-primary btn-lg" }, [
-              _vm._v("\n          6x\n          "),
-              _c("input", {
-                attrs: {
-                  type: "radio",
-                  name: "value",
-                  value: "6",
-                  autocomplete: "off"
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("label", { staticClass: "btn btn-primary btn-lg" }, [
-              _vm._v("\n          12x\n          "),
-              _c("input", {
-                attrs: {
-                  type: "radio",
-                  name: "value",
-                  value: "12",
-                  autocomplete: "off"
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("label", { staticClass: "btn btn-primary btn-lg" }, [
-              _vm._v("\n          16x\n          "),
-              _c("input", {
-                attrs: {
-                  type: "radio",
-                  name: "value",
-                  value: "16",
-                  autocomplete: "off"
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("label", { staticClass: "btn btn-primary btn-lg" }, [
-              _vm._v("\n          24x\n          "),
-              _c("input", {
-                attrs: {
-                  type: "radio",
-                  name: "value",
-                  value: "24",
-                  autocomplete: "off"
-                }
-              })
-            ])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-6" }, [
-        _c("div", { staticClass: "row pt-3" }, [
-          _c("div", { staticClass: "col-sm-6" }, [
-            _c("label", { attrs: { for: "otherValue" } }, [
-              _vm._v("Outro prazo:")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control inputFormat",
-              attrs: { type: "number", id: "otherValue" }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-6" }, [
-            _c("label", { attrs: { for: "interestDays" } }, [
-              _vm._v("Dias juros (max 20):")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control inputFormat",
-              attrs: { type: "number", min: "0", max: "20", id: "interestDays" }
-            })
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row justify-content-center pt-5" }, [
-      _c("div", { staticClass: "col-6" }, [
-        _c("button", { staticClass: "btn btn-success btn-block" }, [
-          _vm._v("Simular")
-        ])
+        _c("input", {
+          staticClass: "form-control inputFormat",
+          attrs: { type: "number", min: "0", max: "20", id: "interestDays" }
+        })
       ])
     ])
   }
@@ -38938,20 +38886,27 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("td", [
-              _vm._v("R$" + _vm._s(_vm.simulator.installmentValueWithoutTariff))
+              _vm._v(
+                "R$" +
+                  _vm._s(_vm.simulator.installmentValueWithoutTariff.toFixed(2))
+              )
             ])
           ]),
           _vm._v(" "),
           _c("tr", [
             _c("th", { attrs: { scope: "col" } }, [_vm._v("Total de Juros:")]),
             _vm._v(" "),
-            _c("td", [_vm._v("R$" + _vm._s(_vm.simulator.totalInterest))])
+            _c("td", [
+              _vm._v("R$" + _vm._s(_vm.simulator.totalInterest.toFixed(2)))
+            ])
           ]),
           _vm._v(" "),
           _c("tr", [
             _c("th", { attrs: { scope: "col" } }, [_vm._v("Total Parcial 1:")]),
             _vm._v(" "),
-            _c("td", [_vm._v("R$" + _vm._s(_vm.simulator.totalParcial))])
+            _c("td", [
+              _vm._v("R$" + _vm._s(_vm.simulator.totalPartial.toFixed(2)))
+            ])
           ]),
           _vm._v(" "),
           _c("tr", [
@@ -38959,7 +38914,9 @@ var render = function() {
               _vm._v("Dias Juros (ajuste parcela):")
             ]),
             _vm._v(" "),
-            _c("td", [_vm._v("R$" + _vm._s(_vm.simulator.interesDays))])
+            _c("td", [
+              _vm._v("R$" + _vm._s(_vm.simulator.interestDays.toFixed(2)))
+            ])
           ]),
           _vm._v(" "),
           _c("tr", [
@@ -38967,7 +38924,9 @@ var render = function() {
               _vm._v("Total de Tarifas:")
             ]),
             _vm._v(" "),
-            _c("td", [_vm._v("R$" + _vm._s(_vm.simulator.totalFare))])
+            _c("td", [
+              _vm._v("R$" + _vm._s(_vm.simulator.totalFare.toFixed(2)))
+            ])
           ]),
           _vm._v(" "),
           _c("tr", [
@@ -52790,9 +52749,9 @@ __webpack_require__.r(__webpack_exports__);
       // valor financiado
       interestRate: 0.15,
       // taxa de juros %
-      term: 10,
+      term: 0,
       // prazo
-      collectionFee: 69.01,
+      collectionFee: 69.00,
       // taxa de cobrança
       registrationFee: 50.0,
       // taxa de cadastro
@@ -52812,18 +52771,26 @@ __webpack_require__.r(__webpack_exports__);
       //total do financiamento
       installmentValuePlusTariff: 0,
       // valor das parcelas mais tarifas
-      coefficient: 19.92 // coeficiente
+      coefficient: 0 // coeficiente
 
     },
-    inputRange: {
+    inputRangeLoan: {
       step: 250,
       min: 1000,
-      max: 3000
+      max: 10000
+    },
+    inputRangeTimes: {
+      step: 3,
+      min: 3,
+      max: 12
     }
   },
   getters: {
-    dataInputRange: function dataInputRange(state) {
-      return state.inputRange;
+    dataInputRangeLoan: function dataInputRangeLoan(state) {
+      return state.inputRangeLoan;
+    },
+    dataInputRangeTimes: function dataInputRangeTimes(state) {
+      return state.inputRangeTimes;
     },
     simulatorData: function simulatorData(state) {
       return state.simulatorData;
@@ -52831,10 +52798,30 @@ __webpack_require__.r(__webpack_exports__);
   },
   mutations: {
     calculateFinancing: function calculateFinancing(state, payload) {
-      state.coefficient = payload.financedAmount / payload.term * payload.coefficient;
+      var cf;
+      var i = parseFloat(state.simulatorData.interestRate);
+      var val = parseFloat(payload.val);
+      var n = parseFloat(payload.term); //    cf = this.extractCoeficcient(i,n);
+
+      cf = i / (1 - 1 / Math.pow(1 + i, n));
+      var result = cf * val * n;
+      state.simulatorData.term = payload.term;
+      state.simulatorData.totalPartial = result;
+      state.simulatorData.installmentValueWithoutTariff = cf * val;
+      state.simulatorData.totalInterest = result - payload.val;
+      state.simulatorData.totalFare = state.simulatorData.collectionFee + state.simulatorData.registrationFee + state.simulatorData.consultationFee; // dias juros = val * juros * dias juros / 30
+
+      console.log("Parcela s/tarifa " + cf * val);
+      console.log("Coeficiente " + cf);
+      console.log("Total Parcial " + result);
     }
   },
-  actions: {}
+  actions: {
+    extractCoeficcient: function extractCoeficcient(i, n) {
+      var cf = i / (1 - 1 / Math.pow(1 + i, n));
+      return cf;
+    }
+  }
 });
 
 /***/ }),

@@ -40,23 +40,23 @@
         <tbody>
           <tr>
             <th scope="col">Valor da Parcela (sem tarifa):</th>
-            <td>R${{ simulator.installmentValueWithoutTariff }}</td>
+            <td>R${{ simulator.installmentValueWithoutTariff.toFixed(2) }}</td>
           </tr>
           <tr>
             <th scope="col">Total de Juros:</th>
-            <td>R${{ simulator.totalInterest }}</td>
+            <td>R${{ simulator.totalInterest.toFixed(2) }}</td>
           </tr>
           <tr>
             <th scope="col">Total Parcial 1:</th>
-            <td>R${{ simulator.totalParcial }}</td>
+            <td>R${{ simulator.totalPartial.toFixed(2) }}</td>
           </tr>
           <tr>
             <th scope="col">Dias Juros (ajuste parcela):</th>
-            <td>R${{ simulator.interesDays }}</td>
+            <td>R${{ simulator.interestDays.toFixed(2) }}</td>
           </tr>
           <tr>
             <th scope="col">Total de Tarifas:</th>
-            <td>R${{ simulator.totalFare }}</td>
+            <td>R${{ simulator.totalFare.toFixed(2) }}</td>
           </tr>
           <tr>
             <th scope="col">Total total Financiamento:</th>

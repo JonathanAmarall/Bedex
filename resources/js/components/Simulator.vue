@@ -1,12 +1,12 @@
 <template>
   <div class="container">
-    <div class="card">
+    <div class="card col-sm">
       <div class="card-body">
         <div>
           <InputsFromSimulator></InputsFromSimulator>
         </div>
         <hr />
-        <div class="d-none pt-2">
+        <div class="pt-2">
           <TableResult></TableResult>
         </div>
       </div>
