@@ -2013,7 +2013,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _partials_simulator_InputsFromSimulator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../partials/simulator/InputsFromSimulator */ "./resources/js/partials/simulator/InputsFromSimulator.vue");
 /* harmony import */ var _partials_simulator_Buttons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../partials/simulator/Buttons */ "./resources/js/partials/simulator/Buttons.vue");
-/* harmony import */ var _partials_simulator_TableResult__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../partials/simulator/TableResult */ "./resources/js/partials/simulator/TableResult.vue");
+/* harmony import */ var _partials_simulator_ModalTableResult__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../partials/simulator/ModalTableResult */ "./resources/js/partials/simulator/ModalTableResult.vue");
 //
 //
 //
@@ -2036,7 +2036,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     InputsFromSimulator: _partials_simulator_InputsFromSimulator__WEBPACK_IMPORTED_MODULE_0__["default"],
-    TableResult: _partials_simulator_TableResult__WEBPACK_IMPORTED_MODULE_2__["default"]
+    ModalTableResult: _partials_simulator_ModalTableResult__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   data: function data() {
     return {};
@@ -2089,6 +2089,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 //
 //
 //
@@ -2143,11 +2144,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       data: {
-        val: 1000,
+        financedAmount: 1000,
         term: 3,
         interestDays: 0
       }
@@ -2163,23 +2177,37 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     calculateFinancing: function calculateFinancing(data) {
-      console.log(data);
-      this.$store.commit('calculateFinancing', data);
+      this.$store.dispatch("calculateFinancing", data);
     }
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/partials/simulator/TableResult.vue?vue&type=script&lang=js&":
-/*!******************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/partials/simulator/TableResult.vue?vue&type=script&lang=js& ***!
-  \******************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/partials/simulator/ModalTableResult.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/partials/simulator/ModalTableResult.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -6856,10 +6884,10 @@ exports.push([module.i, "\n.txtValue {\r\n  text-align: center;\n}\n.slider {\r\
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/partials/simulator/TableResult.vue?vue&type=style&index=0&lang=css&":
-/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/partials/simulator/TableResult.vue?vue&type=style&index=0&lang=css& ***!
-  \*************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/partials/simulator/ModalTableResult.vue?vue&type=style&index=0&lang=css&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/partials/simulator/ModalTableResult.vue?vue&type=style&index=0&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -37801,15 +37829,15 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/partials/simulator/TableResult.vue?vue&type=style&index=0&lang=css&":
-/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/partials/simulator/TableResult.vue?vue&type=style&index=0&lang=css& ***!
-  \*****************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/partials/simulator/ModalTableResult.vue?vue&type=style&index=0&lang=css&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/partials/simulator/ModalTableResult.vue?vue&type=style&index=0&lang=css& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./TableResult.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/partials/simulator/TableResult.vue?vue&type=style&index=0&lang=css&");
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./ModalTableResult.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/partials/simulator/ModalTableResult.vue?vue&type=style&index=0&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -38551,7 +38579,7 @@ var render = function() {
         _vm._v(" "),
         _c("hr"),
         _vm._v(" "),
-        _c("div", { staticClass: "pt-2" }, [_c("TableResult")], 1)
+        _c("div", { staticClass: "pt-2" }, [_c("ModalTableResult")], 1)
       ])
     ])
   ])
@@ -38677,7 +38705,7 @@ var render = function() {
         _vm._v(" "),
         _c("div", [
           _c("h2", { staticClass: "txtValue pt-3" }, [
-            _vm._v("Valor: R$" + _vm._s(_vm.data.val) + ",00")
+            _vm._v("Valor: R$" + _vm._s(_vm.data.financedAmount) + ",00")
           ]),
           _vm._v(" "),
           _c("input", {
@@ -38685,8 +38713,8 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.data.val,
-                expression: "data.val"
+                value: _vm.data.financedAmount,
+                expression: "data.financedAmount"
               }
             ],
             staticClass: "slider",
@@ -38697,10 +38725,10 @@ var render = function() {
               step: _vm.dataInputRangeLoan.step,
               id: "range1"
             },
-            domProps: { value: _vm.data.val },
+            domProps: { value: _vm.data.financedAmount },
             on: {
               __r: function($event) {
-                return _vm.$set(_vm.data, "val", $event.target.value)
+                return _vm.$set(_vm.data, "financedAmount", $event.target.value)
               }
             }
           })
@@ -38747,7 +38775,35 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(0),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-6" }, [
+        _c("label", { attrs: { for: "interestDays" } }, [
+          _vm._v("Dias juros:")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.data.interestDays,
+              expression: "data.interestDays"
+            }
+          ],
+          staticClass: "form-control inputFormat",
+          attrs: { type: "number", min: "0", max: "20", id: "interestDays" },
+          domProps: { value: _vm.data.interestDays },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.data, "interestDays", $event.target.value)
+            }
+          }
+        })
+      ])
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "row justify-content-center pt-5" }, [
       _c("div", { staticClass: "col-6" }, [
@@ -38755,6 +38811,10 @@ var render = function() {
           "button",
           {
             staticClass: "btn btn-success btn-block",
+            attrs: {
+              "data-toggle": "modal",
+              "data-target": ".bd-example-modal-lg"
+            },
             on: {
               click: function($event) {
                 $event.preventDefault()
@@ -38768,35 +38828,17 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-6" }, [
-        _c("label", { attrs: { for: "interestDays" } }, [
-          _vm._v("Dias juros:")
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control inputFormat",
-          attrs: { type: "number", min: "0", max: "20", id: "interestDays" }
-        })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/partials/simulator/TableResult.vue?vue&type=template&id=c7e9ddbe&":
-/*!**********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/partials/simulator/TableResult.vue?vue&type=template&id=c7e9ddbe& ***!
-  \**********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/partials/simulator/ModalTableResult.vue?vue&type=template&id=53f13f10&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/partials/simulator/ModalTableResult.vue?vue&type=template&id=53f13f10& ***!
+  \***************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -38808,150 +38850,217 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row pt-2" }, [
-    _c("div", { staticClass: "col-sm-6" }, [
-      _c("table", { staticClass: "table table-sm" }, [
-        _c("tbody", [
-          _c("tr", [
-            _c("th", { attrs: { scope: "col" } }, [
-              _vm._v("Valor Financiado:")
+  return _c(
+    "div",
+    {
+      staticClass: "modal fade bd-example-modal-lg",
+      attrs: {
+        tabindex: "-1",
+        role: "dialog",
+        "aria-labelledby": "myLargeModalLabel",
+        "aria-hidden": "true"
+      }
+    },
+    [
+      _c("div", { staticClass: "modal-dialog modal-lg" }, [
+        _c("div", { staticClass: "modal-content" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "row pt-2" }, [
+            _c("div", { staticClass: "col-sm-6" }, [
+              _c("table", { staticClass: "table table-sm" }, [
+                _c("tbody", [
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Valor Financiado:")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v("R$" + _vm._s(_vm.simulator.financedAmount))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Taxa de Juros:")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm.simulator.interestRate * 100) + "%")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Prazo (meses):")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(_vm.simulator.term))])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Tarifa de cobrança:")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        "R$" + _vm._s(_vm.simulator.collectionFee.toFixed(2))
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Tarifa de Cadastro:")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        "R$" + _vm._s(_vm.simulator.registrationFee.toFixed(2))
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Tarifa de consulta:")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        "R$" + _vm._s(_vm.simulator.consultationFee.toFixed(2))
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Dias Juros (solicitado):")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(_vm.simulator.interestDays))])
+                  ])
+                ])
+              ])
             ]),
             _vm._v(" "),
-            _c("td", [
-              _vm._v("R$" + _vm._s(_vm.simulator.financedAmount.toFixed(2)))
+            _c("div", { staticClass: "divider", attrs: { align: "center" } }),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-5" }, [
+              _c("table", { staticClass: "table table-sm" }, [
+                _c("tbody", [
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Valor da Parcela (sem tarifa):")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        "R$" +
+                          _vm._s(
+                            _vm.simulator.installmentValueWithoutTariff.toFixed(
+                              2
+                            )
+                          )
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Total de Juros:")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        "R$" + _vm._s(_vm.simulator.totalInterest.toFixed(2))
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Total Parcial 1:")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        "R$" + _vm._s(_vm.simulator.totalPartial.toFixed(2))
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Dias Juros (ajuste parcela):")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        "R$" +
+                          _vm._s(_vm.simulator.interestDaysValue.toFixed(2))
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Total de Tarifas:")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v("R$" + _vm._s(_vm.simulator.totalFare.toFixed(2)))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Valor total Financiamento:")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        "R$" + _vm._s(_vm.simulator.totalFinancing.toFixed(2))
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Valor das Parcelas (com tarifas):")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        "R$" +
+                          _vm._s(
+                            _vm.simulator.installmentValuePlusTariff.toFixed(2)
+                          )
+                      )
+                    ])
+                  ])
+                ])
+              ])
             ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Taxa de Juros:")]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(_vm.simulator.interestRate * 100) + "%")])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Prazo (meses):")]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(_vm.simulator.term))])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("th", { attrs: { scope: "col" } }, [
-              _vm._v("Tarifa de cobrança:")
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _vm._v("R$" + _vm._s(_vm.simulator.collectionFee.toFixed(2)))
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("th", { attrs: { scope: "col" } }, [
-              _vm._v("Tarifa de Cadastro:")
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _vm._v("R$" + _vm._s(_vm.simulator.registrationFee.toFixed(2)))
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("th", { attrs: { scope: "col" } }, [
-              _vm._v("Tarifa de consulta:")
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _vm._v("R$" + _vm._s(_vm.simulator.consultationFee.toFixed(2)))
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("th", { attrs: { scope: "col" } }, [
-              _vm._v("Dias Juros (ajuste parcela):")
-            ]),
-            _vm._v(" "),
-            _c("td", [_vm._v("R$" + _vm._s(_vm.simulator.interestDays))])
           ])
         ])
       ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "divider", attrs: { align: "center" } }),
-    _vm._v(" "),
-    _c("div", { staticClass: "col-sm-5" }, [
-      _c("table", { staticClass: "table table-sm" }, [
-        _c("tbody", [
-          _c("tr", [
-            _c("th", { attrs: { scope: "col" } }, [
-              _vm._v("Valor da Parcela (sem tarifa):")
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _vm._v(
-                "R$" +
-                  _vm._s(_vm.simulator.installmentValueWithoutTariff.toFixed(2))
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Total de Juros:")]),
-            _vm._v(" "),
-            _c("td", [
-              _vm._v("R$" + _vm._s(_vm.simulator.totalInterest.toFixed(2)))
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Total Parcial 1:")]),
-            _vm._v(" "),
-            _c("td", [
-              _vm._v("R$" + _vm._s(_vm.simulator.totalPartial.toFixed(2)))
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("th", { attrs: { scope: "col" } }, [
-              _vm._v("Dias Juros (ajuste parcela):")
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _vm._v("R$" + _vm._s(_vm.simulator.interestDays.toFixed(2)))
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("th", { attrs: { scope: "col" } }, [
-              _vm._v("Total de Tarifas:")
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _vm._v("R$" + _vm._s(_vm.simulator.totalFare.toFixed(2)))
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("th", { attrs: { scope: "col" } }, [
-              _vm._v("Total total Financiamento:")
-            ]),
-            _vm._v(" "),
-            _c("td", [_vm._v("R$" + _vm._s(_vm.simulator.totalFinancing))])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("th", { attrs: { scope: "col" } }, [
-              _vm._v("Valor das Parcelas (com tarifas):")
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _vm._v("R$" + _vm._s(_vm.simulator.installmentValuePlusTariff))
-            ])
-          ])
-        ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("div", { staticClass: "modal-title" }, [
+        _vm._v("Resultado da simulação")
       ])
     ])
-  ])
-}
-var staticRenderFns = []
+  }
+]
 render._withStripped = true
 
 
@@ -52590,18 +52699,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/partials/simulator/TableResult.vue":
-/*!*********************************************************!*\
-  !*** ./resources/js/partials/simulator/TableResult.vue ***!
-  \*********************************************************/
+/***/ "./resources/js/partials/simulator/ModalTableResult.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/partials/simulator/ModalTableResult.vue ***!
+  \**************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _TableResult_vue_vue_type_template_id_c7e9ddbe___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TableResult.vue?vue&type=template&id=c7e9ddbe& */ "./resources/js/partials/simulator/TableResult.vue?vue&type=template&id=c7e9ddbe&");
-/* harmony import */ var _TableResult_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TableResult.vue?vue&type=script&lang=js& */ "./resources/js/partials/simulator/TableResult.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _TableResult_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TableResult.vue?vue&type=style&index=0&lang=css& */ "./resources/js/partials/simulator/TableResult.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _ModalTableResult_vue_vue_type_template_id_53f13f10___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ModalTableResult.vue?vue&type=template&id=53f13f10& */ "./resources/js/partials/simulator/ModalTableResult.vue?vue&type=template&id=53f13f10&");
+/* harmony import */ var _ModalTableResult_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ModalTableResult.vue?vue&type=script&lang=js& */ "./resources/js/partials/simulator/ModalTableResult.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _ModalTableResult_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ModalTableResult.vue?vue&type=style&index=0&lang=css& */ "./resources/js/partials/simulator/ModalTableResult.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -52612,9 +52721,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _TableResult_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _TableResult_vue_vue_type_template_id_c7e9ddbe___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _TableResult_vue_vue_type_template_id_c7e9ddbe___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _ModalTableResult_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ModalTableResult_vue_vue_type_template_id_53f13f10___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ModalTableResult_vue_vue_type_template_id_53f13f10___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -52624,54 +52733,54 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/partials/simulator/TableResult.vue"
+component.options.__file = "resources/js/partials/simulator/ModalTableResult.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/partials/simulator/TableResult.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************!*\
-  !*** ./resources/js/partials/simulator/TableResult.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************/
+/***/ "./resources/js/partials/simulator/ModalTableResult.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/partials/simulator/ModalTableResult.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TableResult_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./TableResult.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/partials/simulator/TableResult.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TableResult_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ModalTableResult_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ModalTableResult.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/partials/simulator/ModalTableResult.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ModalTableResult_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/partials/simulator/TableResult.vue?vue&type=style&index=0&lang=css&":
-/*!******************************************************************************************!*\
-  !*** ./resources/js/partials/simulator/TableResult.vue?vue&type=style&index=0&lang=css& ***!
-  \******************************************************************************************/
+/***/ "./resources/js/partials/simulator/ModalTableResult.vue?vue&type=style&index=0&lang=css&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/partials/simulator/ModalTableResult.vue?vue&type=style&index=0&lang=css& ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TableResult_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./TableResult.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/partials/simulator/TableResult.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TableResult_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TableResult_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TableResult_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TableResult_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TableResult_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ModalTableResult_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./ModalTableResult.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/partials/simulator/ModalTableResult.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ModalTableResult_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ModalTableResult_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ModalTableResult_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ModalTableResult_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ModalTableResult_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
-/***/ "./resources/js/partials/simulator/TableResult.vue?vue&type=template&id=c7e9ddbe&":
-/*!****************************************************************************************!*\
-  !*** ./resources/js/partials/simulator/TableResult.vue?vue&type=template&id=c7e9ddbe& ***!
-  \****************************************************************************************/
+/***/ "./resources/js/partials/simulator/ModalTableResult.vue?vue&type=template&id=53f13f10&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/partials/simulator/ModalTableResult.vue?vue&type=template&id=53f13f10& ***!
+  \*********************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TableResult_vue_vue_type_template_id_c7e9ddbe___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./TableResult.vue?vue&type=template&id=c7e9ddbe& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/partials/simulator/TableResult.vue?vue&type=template&id=c7e9ddbe&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TableResult_vue_vue_type_template_id_c7e9ddbe___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ModalTableResult_vue_vue_type_template_id_53f13f10___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ModalTableResult.vue?vue&type=template&id=53f13f10& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/partials/simulator/ModalTableResult.vue?vue&type=template&id=53f13f10&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ModalTableResult_vue_vue_type_template_id_53f13f10___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TableResult_vue_vue_type_template_id_c7e9ddbe___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ModalTableResult_vue_vue_type_template_id_53f13f10___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -52759,6 +52868,7 @@ __webpack_require__.r(__webpack_exports__);
       // taxa de consulta
       interestDays: 0,
       // Dias Juros
+      interestDaysValue: 0,
       installmentValueWithoutTariff: 0,
       // valor da parcela sem tarifa
       totalInterest: 0,
@@ -52797,29 +52907,58 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mutations: {
-    calculateFinancing: function calculateFinancing(state, payload) {
-      var cf;
-      var i = parseFloat(state.simulatorData.interestRate);
-      var val = parseFloat(payload.val);
-      var n = parseFloat(payload.term); //    cf = this.extractCoeficcient(i,n);
-
-      cf = i / (1 - 1 / Math.pow(1 + i, n));
-      var result = cf * val * n;
+    UPDATE_TERM_FINANCEDAMOUNT_INTERESTDAYS: function UPDATE_TERM_FINANCEDAMOUNT_INTERESTDAYS(state, payload) {
       state.simulatorData.term = payload.term;
-      state.simulatorData.totalPartial = result;
-      state.simulatorData.installmentValueWithoutTariff = cf * val;
-      state.simulatorData.totalInterest = result - payload.val;
-      state.simulatorData.totalFare = state.simulatorData.collectionFee + state.simulatorData.registrationFee + state.simulatorData.consultationFee; // dias juros = val * juros * dias juros / 30
-
-      console.log("Parcela s/tarifa " + cf * val);
-      console.log("Coeficiente " + cf);
-      console.log("Total Parcial " + result);
+      state.simulatorData.financedAmount = payload.financedAmount;
+      state.simulatorData.interestDays = payload.interestDays;
+    },
+    UPDATE_TOTALPARTIAL: function UPDATE_TOTALPARTIAL(state, payload) {
+      state.simulatorData.totalPartial = payload;
+    },
+    UPDATE_INSTALLMENT_VALUE_WITHOUT_TARIFF: function UPDATE_INSTALLMENT_VALUE_WITHOUT_TARIFF(state, payload) {
+      state.simulatorData.installmentValueWithoutTariff = payload;
+    },
+    UPDATE_TOTALINTEREST: function UPDATE_TOTALINTEREST(state, payload) {
+      state.simulatorData.totalInterest = payload;
+    },
+    UPDATE_INTEREST_DAYS_VALUE: function UPDATE_INTEREST_DAYS_VALUE(state, payload) {
+      state.simulatorData.interestDaysValue = payload;
+    },
+    UPDATE_TOTAL_FARE: function UPDATE_TOTAL_FARE(state, payload) {
+      state.simulatorData.totalFare = payload;
+    },
+    UPDATE_INSTALLMENT_VALUE_PLUS_TARIFF: function UPDATE_INSTALLMENT_VALUE_PLUS_TARIFF(state, payload) {
+      state.simulatorData.installmentValuePlusTariff = payload;
+    },
+    UPDATE_TOTAL_FINANCING: function UPDATE_TOTAL_FINANCING(state, payload) {
+      state.simulatorData.totalFinancing = payload;
     }
   },
   actions: {
-    extractCoeficcient: function extractCoeficcient(i, n) {
-      var cf = i / (1 - 1 / Math.pow(1 + i, n));
-      return cf;
+    calculateFinancing: function calculateFinancing(_ref, payload) {
+      var commit = _ref.commit,
+          state = _ref.state,
+          dispatch = _ref.dispatch;
+      console.log(payload);
+      var financedAmount = payload.financedAmount;
+      var term = parseFloat(payload.term);
+      var interestRate = parseFloat(state.simulatorData.interestRate);
+      var cf = interestRate / (1 - 1 / Math.pow(1 + interestRate, term));
+      var installmentValueWithoutTariff = cf * financedAmount;
+      var totalPartial = cf * financedAmount * term;
+      var totalInterest = totalPartial - financedAmount;
+      var interestDaysValue = financedAmount * interestRate * payload.interestDays / 30;
+      var totalFare = state.simulatorData.collectionFee + state.simulatorData.registrationFee + state.simulatorData.consultationFee + interestDaysValue;
+      var installmentValuePlusTariff = installmentValueWithoutTariff + totalFare;
+      var totalFinancing = installmentValuePlusTariff * term;
+      commit('UPDATE_TOTAL_FINANCING', totalFinancing);
+      commit('UPDATE_INSTALLMENT_VALUE_PLUS_TARIFF', installmentValuePlusTariff);
+      commit('UPDATE_TOTAL_FARE', totalFare);
+      commit('UPDATE_INTEREST_DAYS_VALUE', interestDaysValue);
+      commit('UPDATE_TOTALINTEREST', totalInterest);
+      commit('UPDATE_TERM_FINANCEDAMOUNT_INTERESTDAYS', payload);
+      commit('UPDATE_TOTALPARTIAL', totalPartial);
+      commit('UPDATE_INSTALLMENT_VALUE_WITHOUT_TARIFF', installmentValueWithoutTariff);
     }
   }
 });
@@ -52872,8 +53011,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Prog\Desktop\bedex\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Prog\Desktop\bedex\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\jhoua\Desktop\bedex\bedex\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\jhoua\Desktop\bedex\bedex\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

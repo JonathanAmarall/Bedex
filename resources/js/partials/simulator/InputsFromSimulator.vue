@@ -4,11 +4,11 @@
       <div class="col-sm">
         <h1 class="txtValue">Qual o valor do empréstimo?</h1>
         <div>
-          <h2 class="txtValue pt-3">Valor: R${{ data.val }},00</h2>
+          <h2 class="txtValue pt-3">Valor: R${{ data.financedAmount }},00</h2>
           <input
             type="range"
             class="slider"
-            v-model="data.val"
+            v-model="data.financedAmount"
             :min="dataInputRangeLoan.min"
             :max="dataInputRangeLoan.max"
             :step="dataInputRangeLoan.step"
@@ -40,24 +40,37 @@
     <div class="row">
       <div class="col-sm-6">
         <label for="interestDays">Dias juros:</label>
-        <input type="number" min="0" max="20" class="form-control inputFormat" id="interestDays" />
+        <input
+          type="number"
+          v-model="data.interestDays"
+          min="0"
+          max="20"
+          class="form-control inputFormat"
+          id="interestDays"
+        />
       </div>
     </div>
 
     <div class="row justify-content-center pt-5">
       <div class="col-6">
-        <button @click.prevent="calculateFinancing(data)" class="btn btn-success btn-block">Simular</button>
+        <button
+          @click.prevent="calculateFinancing(data)"
+          data-toggle="modal"
+          data-target=".bd-example-modal-lg"
+          class="btn btn-success btn-block"
+        >Simular</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import vuex from "vuex";
 export default {
   data() {
     return {
       data: {
-        val: 1000,
+        financedAmount: 1000,
         term: 3,
         interestDays: 0
       }
@@ -73,8 +86,7 @@ export default {
   },
   methods: {
     calculateFinancing(data) {
-      console.log(data)
-      this.$store.commit('calculateFinancing', data)
+      this.$store.dispatch("calculateFinancing", data);
     }
   }
 };

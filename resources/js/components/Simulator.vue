@@ -7,7 +7,7 @@
         </div>
         <hr />
         <div class="pt-2">
-          <TableResult></TableResult>
+          <ModalTableResult></ModalTableResult>
         </div>
       </div>
     </div>
@@ -17,10 +17,10 @@
 <script>
 import InputsFromSimulator from "../partials/simulator/InputsFromSimulator";
 import Buttons from "../partials/simulator/Buttons";
-import TableResult from "../partials/simulator/TableResult";
+import ModalTableResult from "../partials/simulator/ModalTableResult";
 
 export default {
-  components: { InputsFromSimulator, TableResult },
+  components: { InputsFromSimulator, ModalTableResult },
   data() {
     return {};
   },
