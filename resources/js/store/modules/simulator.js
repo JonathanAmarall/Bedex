@@ -1,33 +1,38 @@
+import axios from "axios";
+
 export default {
     state: {
         // calculation data
         simulatorData: {
-            financedAmount: 0, // valor financiado
-            interestRate: 0.15, // taxa de juros %
-            term: 0, // prazo
+            financedAmount: 0,     // valor financiado
+            interestRate: 0.15,  // taxa de juros %
+            term: 0,     // prazo
             collectionFee: 69.00, // taxa de cobrança
-            registrationFee: 50.0, // taxa de cadastro
-            consultationFee: 20.0, // taxa de consulta
-            interestDays: 0, // Dias Juros
-            interestDaysValue: 0,
-            installmentValueWithoutTariff: 0, // valor da parcela sem tarifa
-            totalInterest: 0, //  total de juros
-            totalPartial: 0, // total parcial
-            totalFare: 0, // total de tarifas
-            totalFinancing: 0, //total do financiamento
-            installmentValuePlusTariff: 0, // valor das parcelas mais tarifas
-            coefficient: 0, // coeficiente
+            registrationFee: 50.0,  // taxa de cadastro
+            consultationFee: 20.0,  // taxa de consulta
+            interestDays: 0,     // Dias Juros
+            interestDaysValue: 0,     // dias juros valor
+            installmentValueWithoutTariff: 0,     // valor da parcela sem tarifa
+            totalInterest: 0,     //  total de juros
+            totalPartial: 0,     // total parcial
+            totalFare: 0,     // total de tarifas
+            totalFinancing: 0,     //total do financiamento
+            installmentValuePlusTariff: 0,     // valor das parcelas mais tarifas
+            coefficient: 0,     // coeficiente
         },
 
         inputRangeLoan: {
             step: 250,
             min: 1000,
             max: 10000,
+            initVal: 0,
+
         },
         inputRangeTimes: {
             step: 3,
             min: 3,
             max: 12,
+            initVal: 0,
         }
     },
     getters: {
@@ -40,7 +45,6 @@ export default {
         simulatorData(state) {
             return state.simulatorData
         }
-
     },
     mutations: {
         UPDATE_TERM_FINANCEDAMOUNT_INTERESTDAYS(state, payload) {
@@ -68,11 +72,25 @@ export default {
         },
         UPDATE_TOTAL_FINANCING(state, payload) {
             state.simulatorData.totalFinancing = payload;
+        },
+        UPDATE_INPUT_RANGE_TIMES(state, payload) {
+            // console.log(payload.inputRangeTimesVal)
+            state.inputRangeTimes.step = payload.inputRangeTimesStep;
+            state.inputRangeTimes.max = payload.inputRangeTimesMax;
+            state.inputRangeTimes.min = payload.inputRangeTimesMin;
+            state.inputRangeTimes.initVal = payload.inputRangeTimesVal;
+        },
+        UPDATE_INPUT_RANGE_LOAN(state , payload){
+            console.log(payload.inputRangeLoanVal)
+            state.inputRangeLoan.step = payload.inputRangeLoanStep;
+            state.inputRangeLoan.max = payload.inputRangeLoanMax;
+            state.inputRangeLoan.min = payload.inputRangeLoanMin;
+            state.inputRangeLoan.initVal = payload.inputRangeLoanVal;
         }
     },
     actions: {
 
-        calculateFinancing({ commit, state, dispatch }, payload) {
+        calculateFinancing({ commit, state }, payload) {
             console.log(payload)
 
             let financedAmount = payload.financedAmount;
@@ -96,5 +114,12 @@ export default {
             commit('UPDATE_TOTALPARTIAL', totalPartial);
             commit('UPDATE_INSTALLMENT_VALUE_WITHOUT_TARIFF', installmentValueWithoutTariff);
         },
+        getValueRangeTimes({ commit }) {
+            axios.get('/simulator/getValueRangeTimes').then(res => commit('UPDATE_INPUT_RANGE_TIMES', res.data));
+        },
+        getValueRangeLoan({ commit }) {
+            axios.get('/simulator/getValueRangeLoan').then(res => commit('UPDATE_INPUT_RANGE_LOAN', res.data));
+            
+        }
     }
 }

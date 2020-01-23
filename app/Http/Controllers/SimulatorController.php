@@ -2,83 +2,44 @@
 
 namespace App\Http\Controllers;
 
+use App\Simulator;
 use Illuminate\Http\Request;
 
 class SimulatorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    protected $simulator;
+
+    public function __construct(Simulator $simulator)
+    {
+        $this->simulator = $simulator;
+    }
     public function index()
     {
         return view('simulator.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function ShowAndEditConfiguration()
     {
-        //
+        $config = Simulator::find(1);
+        return view('simulator.show-and-edit', compact('config'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function update(Request $request)
     {
-        //
+        $config = Simulator::find(1);
+        $config->update($request->all());
+        return redirect()
+            ->back()
+            ->with('success', 'Dados atualizados com sucesso.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function getValueRangeLoan()
     {
-        //
+        return Simulator::select('inputRangeLoanVal', 'inputRangeLoanStep', 'inputRangeLoanMax', 'inputRangeLoanMin')->first();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function getValueRangeTimes()
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return Simulator::select('inputRangeTimesVal', 'inputRangeTimesStep', 'inputRangeTimesMax', 'inputRangeTimesMin')->first();
     }
 }

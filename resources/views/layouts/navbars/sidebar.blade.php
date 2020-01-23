@@ -116,14 +116,14 @@
                     <div class="collapse" id="navbar3">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('simulador.index') }}">
+                                <a class="nav-link" href="{{ route('simulador') }}">
                                     <i class="fas fa-wallet"></i>
                                     {{ __('Simulador') }}
                                 </a>
                             </li>
                             @role('admin')
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ route('simuladorConfig') }}">
                                     <i class="fas fa-cogs"></i>
                                     {{ __('Configurações') }}
                                 </a>

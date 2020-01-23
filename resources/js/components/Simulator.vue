@@ -16,7 +16,6 @@
 
 <script>
 import InputsFromSimulator from "../partials/simulator/InputsFromSimulator";
-import Buttons from "../partials/simulator/Buttons";
 import ModalTableResult from "../partials/simulator/ModalTableResult";
 
 export default {
@@ -24,7 +23,7 @@ export default {
   data() {
     return {};
   },
-
+ 
   methods: {
     enviarDados() {}
   }

@@ -79,7 +79,6 @@ class ProposalController extends Controller
     {
         $proposta = Proposal::find($id);
         $obs = ObsProposal::where('proposal_id', $id)->get();
-        // dd($obs);
         return view('proposals.form.show', compact('proposta', 'obs'));
     }
 

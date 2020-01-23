@@ -4,11 +4,11 @@
       <div class="col-sm">
         <h1 class="txtValue">Qual o valor do empréstimo?</h1>
         <div>
-          <h2 class="txtValue pt-3">Valor: R${{ data.financedAmount }},00</h2>
+          <h2 class="txtValue pt-3">Valor: R${{ dataInputRangeLoan.initVal }},00</h2>
           <input
             type="range"
             class="slider"
-            v-model="data.financedAmount"
+            v-model="dataInputRangeLoan.initVal"
             :min="dataInputRangeLoan.min"
             :max="dataInputRangeLoan.max"
             :step="dataInputRangeLoan.step"
@@ -23,11 +23,11 @@
         <h1 class="txtValue">Quantas vezes?</h1>
 
         <div>
-          <h2 class="txtValue pt-3">{{ data.term }}X</h2>
+          <h2 class="txtValue pt-3">{{ dataInputRangeTimes.initVal }}X</h2>
           <input
             type="range"
             class="slider"
-            v-model="data.term"
+            v-model="dataInputRangeTimes.initVal"
             :step="dataInputRangeTimes.step"
             :min="dataInputRangeTimes.min"
             :max="dataInputRangeTimes.max"
@@ -83,6 +83,10 @@ export default {
     dataInputRangeTimes() {
       return this.$store.getters.dataInputRangeTimes;
     }
+  },
+   created() {
+      this.$store.dispatch('getValueRangeTimes');
+      this.$store.dispatch('getValueRangeLoan');
   },
   methods: {
     calculateFinancing(data) {

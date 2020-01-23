@@ -17,7 +17,6 @@ class RolesAndPermissions extends Seeder
         //reset cached
         app()['cache']->forget('spatie.permission.cache');
 
-
         //Permission for User
         Permission::create(['name' => 'create user']);
         Permission::create(['name' => 'read users']);
@@ -40,7 +39,6 @@ class RolesAndPermissions extends Seeder
         Permission::create(['name' => 'read all']);
         Permission::create(['name' => 'read my']);
 
-
         //criando roles e permissoes
         $role = Role::create(['name' => 'correspondente']);
         $role->givePermissionTo('read users');
@@ -48,7 +46,5 @@ class RolesAndPermissions extends Seeder
 
         $role = Role::create(['name' => 'admin']);
         $role->givePermissionTo(Permission::all());
-
-
     }
 }
