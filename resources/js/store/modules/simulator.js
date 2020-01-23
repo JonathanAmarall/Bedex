@@ -93,7 +93,9 @@ export default {
     },
     actions: {
         async getValueRangeTimes({ commit }) {
-            await axios.get('/simulator/getValueRangeTimes').then(res => commit('UPDATE_INPUT_RANGE_TIMES', res.data));
+            await axios.get('/simulator/getValueRangeTimes').then(res => {
+                this.isLoading = false;
+                commit('UPDATE_INPUT_RANGE_TIMES', res.data)});
         },
         async getValueRangeLoan({ commit }) {
             await axios.get('/simulator/getValueRangeLoan').then(res => commit('UPDATE_INPUT_RANGE_LOAN', res.data));
