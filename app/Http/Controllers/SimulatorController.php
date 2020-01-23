@@ -42,4 +42,9 @@ class SimulatorController extends Controller
     {
         return Simulator::select('inputRangeTimesVal', 'inputRangeTimesStep', 'inputRangeTimesMax', 'inputRangeTimesMin')->first();
     }
+
+    public function updateSimulatorData()
+    {
+        return Simulator::select('interestRate','collectionFee','registrationFee','consultationFee')->first();
+    }
 }

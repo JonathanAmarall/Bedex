@@ -18,7 +18,6 @@ export default {
             totalFare: 0,     // total de tarifas
             totalFinancing: 0,     //total do financiamento
             installmentValuePlusTariff: 0,     // valor das parcelas mais tarifas
-            coefficient: 0,     // coeficiente
         },
 
         inputRangeLoan: {
@@ -74,21 +73,34 @@ export default {
             state.simulatorData.totalFinancing = payload;
         },
         UPDATE_INPUT_RANGE_TIMES(state, payload) {
-            // console.log(payload.inputRangeTimesVal)
             state.inputRangeTimes.step = payload.inputRangeTimesStep;
             state.inputRangeTimes.max = payload.inputRangeTimesMax;
             state.inputRangeTimes.min = payload.inputRangeTimesMin;
             state.inputRangeTimes.initVal = payload.inputRangeTimesVal;
         },
-        UPDATE_INPUT_RANGE_LOAN(state , payload){
-            console.log(payload.inputRangeLoanVal)
+        UPDATE_INPUT_RANGE_LOAN(state, payload) {
             state.inputRangeLoan.step = payload.inputRangeLoanStep;
             state.inputRangeLoan.max = payload.inputRangeLoanMax;
             state.inputRangeLoan.min = payload.inputRangeLoanMin;
             state.inputRangeLoan.initVal = payload.inputRangeLoanVal;
+        },
+        UPDATE_SIMULATOR_DATA(state, payload){
+            state.simulatorData.interestRate = payload.interestRate;
+            state.simulatorData.collectionFee = payload.collectionFee;
+            state.simulatorData.registrationFee = payload.registrationFee;
+            state.simulatorData.consultationFee = payload.consultationFee;
         }
     },
     actions: {
+        async getValueRangeTimes({ commit }) {
+            await axios.get('/simulator/getValueRangeTimes').then(res => commit('UPDATE_INPUT_RANGE_TIMES', res.data));
+        },
+        async getValueRangeLoan({ commit }) {
+            await axios.get('/simulator/getValueRangeLoan').then(res => commit('UPDATE_INPUT_RANGE_LOAN', res.data));
+        },
+        updateSimulatorData({ commit }) {
+            axios.get('/simulator/updateSimulatorData').then(res => commit('UPDATE_SIMULATOR_DATA', res.data));
+        },
 
         calculateFinancing({ commit, state }, payload) {
             console.log(payload)
@@ -101,8 +113,8 @@ export default {
             let totalPartial = (cf * financedAmount) * term;
             let totalInterest = totalPartial - financedAmount;
             let interestDaysValue = financedAmount * interestRate * payload.interestDays / 30;
-            let totalFare = state.simulatorData.collectionFee + state.simulatorData.registrationFee + state.simulatorData.consultationFee + interestDaysValue;
-            let installmentValuePlusTariff = installmentValueWithoutTariff + totalFare;
+            let totalFare = parseFloat(state.simulatorData.collectionFee + state.simulatorData.registrationFee + state.simulatorData.consultationFee + interestDaysValue);
+            let installmentValuePlusTariff = parseFloat(installmentValueWithoutTariff + totalFare);
             let totalFinancing = installmentValuePlusTariff * term;
 
             commit('UPDATE_TOTAL_FINANCING', totalFinancing);
@@ -113,12 +125,6 @@ export default {
             commit('UPDATE_TERM_FINANCEDAMOUNT_INTERESTDAYS', payload);
             commit('UPDATE_TOTALPARTIAL', totalPartial);
             commit('UPDATE_INSTALLMENT_VALUE_WITHOUT_TARIFF', installmentValueWithoutTariff);
-        },
-       async getValueRangeTimes({ commit }) {
-           await axios.get('/simulator/getValueRangeTimes').then(res => commit('UPDATE_INPUT_RANGE_TIMES', res.data));
-        },
-       async getValueRangeLoan({ commit }) {
-           await axios.get('/simulator/getValueRangeLoan').then(res => commit('UPDATE_INPUT_RANGE_LOAN', res.data));
         }
     }
 }

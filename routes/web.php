@@ -32,4 +32,5 @@ Route::group(['middleware' => 'auth'], function () {
 	// requests inputs range simulator
 	Route::get('/simulator/getValueRangeLoan', 'SimulatorController@getValueRangeLoan');
 	Route::get('/simulator/getValueRangeTimes', 'SimulatorController@getValueRangeTimes');
+	Route::get('/simulator/updateSimulatorData', 'SimulatorController@updateSimulatorData');
 });

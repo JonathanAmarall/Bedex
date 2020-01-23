@@ -29,15 +29,15 @@
                 </tr>
                 <tr>
                   <th scope="col">Tarifa de cobrança:</th>
-                  <td>R${{ simulator.collectionFee.toFixed(2) }}</td>
+                  <td>R${{ simulator.collectionFee }}</td>
                 </tr>
                 <tr>
                   <th scope="col">Tarifa de Cadastro:</th>
-                  <td>R${{ simulator.registrationFee.toFixed(2) }}</td>
+                  <td>R${{ simulator.registrationFee }}</td>
                 </tr>
                 <tr>
                   <th scope="col">Tarifa de consulta:</th>
-                  <td>R${{ simulator.consultationFee.toFixed(2) }}</td>
+                  <td>R${{ simulator.consultationFee }}</td>
                 </tr>
                 <tr>
                   <th scope="col">Dias Juros (solicitado):</th>
@@ -68,7 +68,7 @@
                 </tr>
                 <tr>
                   <th scope="col">Total de Tarifas:</th>
-                  <td>R${{ simulator.totalFare.toFixed(2) }}</td>
+                  <td>R${{ simulator.totalFare.toFixed(2)  }}</td>
                 </tr>
                 <tr>
                   <th scope="col">Valor total Financiamento:</th>
@@ -97,6 +97,9 @@ export default {
       console.log(this.$store.state.simulator.simulatorData);
       return this.$store.getters.simulatorData;
     }
+  },
+  created() {
+    this.$store.dispatch("updateSimulatorData");
   }
 };
 </script>

@@ -2303,6 +2303,9 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.$store.state.simulator.simulatorData);
       return this.$store.getters.simulatorData;
     }
+  },
+  created: function created() {
+    this.$store.dispatch("updateSimulatorData");
   }
 });
 
@@ -39522,9 +39525,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("td", [
-                      _vm._v(
-                        "R$" + _vm._s(_vm.simulator.collectionFee.toFixed(2))
-                      )
+                      _vm._v("R$" + _vm._s(_vm.simulator.collectionFee))
                     ])
                   ]),
                   _vm._v(" "),
@@ -39534,9 +39535,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("td", [
-                      _vm._v(
-                        "R$" + _vm._s(_vm.simulator.registrationFee.toFixed(2))
-                      )
+                      _vm._v("R$" + _vm._s(_vm.simulator.registrationFee))
                     ])
                   ]),
                   _vm._v(" "),
@@ -39546,9 +39545,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("td", [
-                      _vm._v(
-                        "R$" + _vm._s(_vm.simulator.consultationFee.toFixed(2))
-                      )
+                      _vm._v("R$" + _vm._s(_vm.simulator.consultationFee))
                     ])
                   ]),
                   _vm._v(" "),
@@ -53422,9 +53419,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       // total de tarifas
       totalFinancing: 0,
       //total do financiamento
-      installmentValuePlusTariff: 0,
-      // valor das parcelas mais tarifas
-      coefficient: 0 // coeficiente
+      installmentValuePlusTariff: 0 // valor das parcelas mais tarifas
 
     },
     inputRangeLoan: {
@@ -53479,55 +53474,35 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       state.simulatorData.totalFinancing = payload;
     },
     UPDATE_INPUT_RANGE_TIMES: function UPDATE_INPUT_RANGE_TIMES(state, payload) {
-      // console.log(payload.inputRangeTimesVal)
       state.inputRangeTimes.step = payload.inputRangeTimesStep;
       state.inputRangeTimes.max = payload.inputRangeTimesMax;
       state.inputRangeTimes.min = payload.inputRangeTimesMin;
       state.inputRangeTimes.initVal = payload.inputRangeTimesVal;
     },
     UPDATE_INPUT_RANGE_LOAN: function UPDATE_INPUT_RANGE_LOAN(state, payload) {
-      console.log(payload.inputRangeLoanVal);
       state.inputRangeLoan.step = payload.inputRangeLoanStep;
       state.inputRangeLoan.max = payload.inputRangeLoanMax;
       state.inputRangeLoan.min = payload.inputRangeLoanMin;
       state.inputRangeLoan.initVal = payload.inputRangeLoanVal;
+    },
+    UPDATE_SIMULATOR_DATA: function UPDATE_SIMULATOR_DATA(state, payload) {
+      state.simulatorData.interestRate = payload.interestRate;
+      state.simulatorData.collectionFee = payload.collectionFee;
+      state.simulatorData.registrationFee = payload.registrationFee;
+      state.simulatorData.consultationFee = payload.consultationFee;
     }
   },
   actions: {
-    calculateFinancing: function calculateFinancing(_ref, payload) {
-      var commit = _ref.commit,
-          state = _ref.state;
-      console.log(payload);
-      var financedAmount = payload.financedAmount;
-      var term = parseFloat(payload.term);
-      var interestRate = parseFloat(state.simulatorData.interestRate);
-      var cf = interestRate / (1 - 1 / Math.pow(1 + interestRate, term));
-      var installmentValueWithoutTariff = cf * financedAmount;
-      var totalPartial = cf * financedAmount * term;
-      var totalInterest = totalPartial - financedAmount;
-      var interestDaysValue = financedAmount * interestRate * payload.interestDays / 30;
-      var totalFare = state.simulatorData.collectionFee + state.simulatorData.registrationFee + state.simulatorData.consultationFee + interestDaysValue;
-      var installmentValuePlusTariff = installmentValueWithoutTariff + totalFare;
-      var totalFinancing = installmentValuePlusTariff * term;
-      commit('UPDATE_TOTAL_FINANCING', totalFinancing);
-      commit('UPDATE_INSTALLMENT_VALUE_PLUS_TARIFF', installmentValuePlusTariff);
-      commit('UPDATE_TOTAL_FARE', totalFare);
-      commit('UPDATE_INTEREST_DAYS_VALUE', interestDaysValue);
-      commit('UPDATE_TOTALINTEREST', totalInterest);
-      commit('UPDATE_TERM_FINANCEDAMOUNT_INTERESTDAYS', payload);
-      commit('UPDATE_TOTALPARTIAL', totalPartial);
-      commit('UPDATE_INSTALLMENT_VALUE_WITHOUT_TARIFF', installmentValueWithoutTariff);
-    },
     getValueRangeTimes: function () {
       var _getValueRangeTimes = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(_ref2) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(_ref) {
         var commit;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                commit = _ref2.commit;
+                commit = _ref.commit;
                 _context.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/simulator/getValueRangeTimes').then(function (res) {
                   return commit('UPDATE_INPUT_RANGE_TIMES', res.data);
@@ -53550,13 +53525,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     getValueRangeLoan: function () {
       var _getValueRangeLoan = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(_ref3) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(_ref2) {
         var commit;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                commit = _ref3.commit;
+                commit = _ref2.commit;
                 _context2.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/simulator/getValueRangeLoan').then(function (res) {
                   return commit('UPDATE_INPUT_RANGE_LOAN', res.data);
@@ -53575,7 +53550,37 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       return getValueRangeLoan;
-    }()
+    }(),
+    updateSimulatorData: function updateSimulatorData(_ref3) {
+      var commit = _ref3.commit;
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/simulator/updateSimulatorData').then(function (res) {
+        return commit('UPDATE_SIMULATOR_DATA', res.data);
+      });
+    },
+    calculateFinancing: function calculateFinancing(_ref4, payload) {
+      var commit = _ref4.commit,
+          state = _ref4.state;
+      console.log(payload);
+      var financedAmount = payload.financedAmount;
+      var term = parseFloat(payload.term);
+      var interestRate = parseFloat(state.simulatorData.interestRate);
+      var cf = interestRate / (1 - 1 / Math.pow(1 + interestRate, term));
+      var installmentValueWithoutTariff = cf * financedAmount;
+      var totalPartial = cf * financedAmount * term;
+      var totalInterest = totalPartial - financedAmount;
+      var interestDaysValue = financedAmount * interestRate * payload.interestDays / 30;
+      var totalFare = parseFloat(state.simulatorData.collectionFee + state.simulatorData.registrationFee + state.simulatorData.consultationFee + interestDaysValue);
+      var installmentValuePlusTariff = parseFloat(installmentValueWithoutTariff + totalFare);
+      var totalFinancing = installmentValuePlusTariff * term;
+      commit('UPDATE_TOTAL_FINANCING', totalFinancing);
+      commit('UPDATE_INSTALLMENT_VALUE_PLUS_TARIFF', installmentValuePlusTariff);
+      commit('UPDATE_TOTAL_FARE', totalFare);
+      commit('UPDATE_INTEREST_DAYS_VALUE', interestDaysValue);
+      commit('UPDATE_TOTALINTEREST', totalInterest);
+      commit('UPDATE_TERM_FINANCEDAMOUNT_INTERESTDAYS', payload);
+      commit('UPDATE_TOTALPARTIAL', totalPartial);
+      commit('UPDATE_INSTALLMENT_VALUE_WITHOUT_TARIFF', installmentValueWithoutTariff);
+    }
   }
 });
 
