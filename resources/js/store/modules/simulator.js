@@ -114,12 +114,11 @@ export default {
             commit('UPDATE_TOTALPARTIAL', totalPartial);
             commit('UPDATE_INSTALLMENT_VALUE_WITHOUT_TARIFF', installmentValueWithoutTariff);
         },
-        getValueRangeTimes({ commit }) {
-            axios.get('/simulator/getValueRangeTimes').then(res => commit('UPDATE_INPUT_RANGE_TIMES', res.data));
+       async getValueRangeTimes({ commit }) {
+           await axios.get('/simulator/getValueRangeTimes').then(res => commit('UPDATE_INPUT_RANGE_TIMES', res.data));
         },
-        getValueRangeLoan({ commit }) {
-            axios.get('/simulator/getValueRangeLoan').then(res => commit('UPDATE_INPUT_RANGE_LOAN', res.data));
-            
+       async getValueRangeLoan({ commit }) {
+           await axios.get('/simulator/getValueRangeLoan').then(res => commit('UPDATE_INPUT_RANGE_LOAN', res.data));
         }
     }
 }

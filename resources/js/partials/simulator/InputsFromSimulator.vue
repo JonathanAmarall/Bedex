@@ -84,9 +84,9 @@ export default {
       return this.$store.getters.dataInputRangeTimes;
     }
   },
-   created() {
-      this.$store.dispatch('getValueRangeTimes');
-      this.$store.dispatch('getValueRangeLoan');
+  async mounted() {
+   await this.$store.dispatch("getValueRangeTimes");
+   await this.$store.dispatch("getValueRangeLoan");
   },
   methods: {
     calculateFinancing(data) {
